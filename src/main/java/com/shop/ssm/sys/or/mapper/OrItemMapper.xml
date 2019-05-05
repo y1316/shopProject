@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.or.mapper.OrItemMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.or.model.OrItem" >
+    <constructor >
+      <idArg column="iid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="icount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isum" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    iid, pid, createdate, icount, isum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from or_item
+    where iid = #{iid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from or_item
+    where iid = #{iid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.or.model.OrItem" >
+    insert into or_item (iid, pid, createdate, 
+      icount, isum)
+    values (#{iid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{icount,jdbcType=INTEGER}, #{isum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.or.model.OrItem" >
+    insert into or_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iid != null" >
+        iid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="icount != null" >
+        icount,
+      </if>
+      <if test="isum != null" >
+        isum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iid != null" >
+        #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="icount != null" >
+        #{icount,jdbcType=INTEGER},
+      </if>
+      <if test="isum != null" >
+        #{isum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.or.model.OrItem" >
+    update or_item
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="icount != null" >
+        icount = #{icount,jdbcType=INTEGER},
+      </if>
+      <if test="isum != null" >
+        isum = #{isum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where iid = #{iid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.or.model.OrItem" >
+    update or_item
+    set pid = #{pid,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      icount = #{icount,jdbcType=INTEGER},
+      isum = #{isum,jdbcType=DECIMAL}
+    where iid = #{iid,jdbcType=INTEGER}
+  </update>
+</mapper>

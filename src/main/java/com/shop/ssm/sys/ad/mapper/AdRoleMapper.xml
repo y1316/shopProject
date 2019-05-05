@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shop.ssm.sys.ad.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.Role" >
+<mapper namespace="com.shop.ssm.sys.ad.mapper.AdRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.AdRole" >
     <constructor >
       <idArg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="rname" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -22,13 +22,13 @@
     delete from ad_role
     where rid = #{rid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.Role" >
+  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
     insert into ad_role (rid, rname, astate, 
       rdescribe)
     values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{astate,jdbcType=INTEGER}, 
       #{rdescribe,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.Role" >
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
     insert into ad_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
@@ -59,7 +59,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.Role" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
     update ad_role
     <set >
       <if test="rname != null" >
@@ -74,7 +74,7 @@
     </set>
     where rid = #{rid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.Role" >
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
     update ad_role
     set rname = #{rname,jdbcType=VARCHAR},
       astate = #{astate,jdbcType=INTEGER},

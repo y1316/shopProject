@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.st.mapper.RcDistrictMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.st.model.RcDistrict" >
+    <constructor >
+      <idArg column="id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="pid" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="district" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="level" jdbcType="BIT" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pid, district, level
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from rc_district
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from rc_district
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.st.model.RcDistrict" >
+    insert into rc_district (id, pid, district, 
+      level)
+    values (#{id,jdbcType=SMALLINT}, #{pid,jdbcType=SMALLINT}, #{district,jdbcType=VARCHAR}, 
+      #{level,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.st.model.RcDistrict" >
+    insert into rc_district
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=SMALLINT},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.st.model.RcDistrict" >
+    update rc_district
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=SMALLINT},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.st.model.RcDistrict" >
+    update rc_district
+    set pid = #{pid,jdbcType=SMALLINT},
+      district = #{district,jdbcType=VARCHAR},
+      level = #{level,jdbcType=BIT}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

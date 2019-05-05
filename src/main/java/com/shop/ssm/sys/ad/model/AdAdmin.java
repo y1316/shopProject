@@ -2,7 +2,7 @@ package com.shop.ssm.sys.ad.model;
 
 import java.util.Date;
 
-public class Admin {
+public class AdAdmin {
     private Integer aid;
 
     private Integer rid;
@@ -19,7 +19,7 @@ public class Admin {
 
     private String aemail;
 
-    public Admin(Integer aid, Integer rid, String aname, String asex, Date atime, Integer astate, String atel, String aemail) {
+    public AdAdmin(Integer aid, Integer rid, String aname, String asex, Date atime, Integer astate, String atel, String aemail) {
         this.aid = aid;
         this.rid = rid;
         this.aname = aname;
@@ -30,7 +30,7 @@ public class Admin {
         this.aemail = aemail;
     }
 
-    public Admin() {
+    public AdAdmin() {
         super();
     }
 

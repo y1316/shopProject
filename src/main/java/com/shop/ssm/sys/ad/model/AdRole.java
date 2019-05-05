@@ -1,6 +1,6 @@
 package com.shop.ssm.sys.ad.model;
 
-public class Role {
+public class AdRole {
     private Integer rid;
 
     private String rname;
@@ -9,14 +9,14 @@ public class Role {
 
     private String rdescribe;
 
-    public Role(Integer rid, String rname, Integer astate, String rdescribe) {
+    public AdRole(Integer rid, String rname, Integer astate, String rdescribe) {
         this.rid = rid;
         this.rname = rname;
         this.astate = astate;
         this.rdescribe = rdescribe;
     }
 
-    public Role() {
+    public AdRole() {
         super();
     }
 

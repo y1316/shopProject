@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.me.mapper.MeBowseMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.me.model.MeBowse" >
+    <constructor >
+      <idArg column="oid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bip" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="btime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    oid, uid, bip, btime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from me_browse
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from me_browse
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.me.model.MeBowse" >
+    insert into me_browse (oid, uid, bip, 
+      btime)
+    values (#{oid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{bip,jdbcType=VARCHAR}, 
+      #{btime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.me.model.MeBowse" >
+    insert into me_browse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="bip != null" >
+        bip,
+      </if>
+      <if test="btime != null" >
+        btime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="bip != null" >
+        #{bip,jdbcType=VARCHAR},
+      </if>
+      <if test="btime != null" >
+        #{btime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.me.model.MeBowse" >
+    update me_browse
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="bip != null" >
+        bip = #{bip,jdbcType=VARCHAR},
+      </if>
+      <if test="btime != null" >
+        btime = #{btime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.me.model.MeBowse" >
+    update me_browse
+    set uid = #{uid,jdbcType=INTEGER},
+      bip = #{bip,jdbcType=VARCHAR},
+      btime = #{btime,jdbcType=TIMESTAMP}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+</mapper>

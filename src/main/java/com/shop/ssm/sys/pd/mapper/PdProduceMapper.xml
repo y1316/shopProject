@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.pd.mapper.PdProduceMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.pd.model.PdProduce" >
+    <constructor >
+      <idArg column="prid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="prname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brieftitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ptype" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nlimit" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="plength" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="pwhidth" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="pheight" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="paddress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ptexture" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="supplier" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="punit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pkg" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="marketprice" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="costprice" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="floorprice" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="starttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="pname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pimage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pstate" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prid, prname, brieftitle, ptype, nlimit, plength, pwhidth, pheight, paddress, ptexture, 
+    supplier, punit, pkg, marketprice, costprice, floorprice, starttime, pname, pimage, 
+    pstate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pd_produce
+    where prid = #{prid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pd_produce
+    where prid = #{prid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.pd.model.PdProduce" >
+    insert into pd_produce (prid, prname, brieftitle, 
+      ptype, nlimit, plength, 
+      pwhidth, pheight, paddress, 
+      ptexture, supplier, punit, 
+      pkg, marketprice, costprice, 
+      floorprice, starttime, pname, 
+      pimage, pstate)
+    values (#{prid,jdbcType=INTEGER}, #{prname,jdbcType=VARCHAR}, #{brieftitle,jdbcType=VARCHAR}, 
+      #{ptype,jdbcType=INTEGER}, #{nlimit,jdbcType=INTEGER}, #{plength,jdbcType=DECIMAL}, 
+      #{pwhidth,jdbcType=DECIMAL}, #{pheight,jdbcType=DECIMAL}, #{paddress,jdbcType=VARCHAR}, 
+      #{ptexture,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}, #{punit,jdbcType=VARCHAR}, 
+      #{pkg,jdbcType=DECIMAL}, #{marketprice,jdbcType=DECIMAL}, #{costprice,jdbcType=DECIMAL}, 
+      #{floorprice,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, #{pname,jdbcType=VARCHAR}, 
+      #{pimage,jdbcType=INTEGER}, #{pstate,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.pd.model.PdProduce" >
+    insert into pd_produce
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prid != null" >
+        prid,
+      </if>
+      <if test="prname != null" >
+        prname,
+      </if>
+      <if test="brieftitle != null" >
+        brieftitle,
+      </if>
+      <if test="ptype != null" >
+        ptype,
+      </if>
+      <if test="nlimit != null" >
+        nlimit,
+      </if>
+      <if test="plength != null" >
+        plength,
+      </if>
+      <if test="pwhidth != null" >
+        pwhidth,
+      </if>
+      <if test="pheight != null" >
+        pheight,
+      </if>
+      <if test="paddress != null" >
+        paddress,
+      </if>
+      <if test="ptexture != null" >
+        ptexture,
+      </if>
+      <if test="supplier != null" >
+        supplier,
+      </if>
+      <if test="punit != null" >
+        punit,
+      </if>
+      <if test="pkg != null" >
+        pkg,
+      </if>
+      <if test="marketprice != null" >
+        marketprice,
+      </if>
+      <if test="costprice != null" >
+        costprice,
+      </if>
+      <if test="floorprice != null" >
+        floorprice,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="pimage != null" >
+        pimage,
+      </if>
+      <if test="pstate != null" >
+        pstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prid != null" >
+        #{prid,jdbcType=INTEGER},
+      </if>
+      <if test="prname != null" >
+        #{prname,jdbcType=VARCHAR},
+      </if>
+      <if test="brieftitle != null" >
+        #{brieftitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ptype != null" >
+        #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="nlimit != null" >
+        #{nlimit,jdbcType=INTEGER},
+      </if>
+      <if test="plength != null" >
+        #{plength,jdbcType=DECIMAL},
+      </if>
+      <if test="pwhidth != null" >
+        #{pwhidth,jdbcType=DECIMAL},
+      </if>
+      <if test="pheight != null" >
+        #{pheight,jdbcType=DECIMAL},
+      </if>
+      <if test="paddress != null" >
+        #{paddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ptexture != null" >
+        #{ptexture,jdbcType=VARCHAR},
+      </if>
+      <if test="supplier != null" >
+        #{supplier,jdbcType=VARCHAR},
+      </if>
+      <if test="punit != null" >
+        #{punit,jdbcType=VARCHAR},
+      </if>
+      <if test="pkg != null" >
+        #{pkg,jdbcType=DECIMAL},
+      </if>
+      <if test="marketprice != null" >
+        #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="costprice != null" >
+        #{costprice,jdbcType=DECIMAL},
+      </if>
+      <if test="floorprice != null" >
+        #{floorprice,jdbcType=DECIMAL},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pimage != null" >
+        #{pimage,jdbcType=INTEGER},
+      </if>
+      <if test="pstate != null" >
+        #{pstate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.pd.model.PdProduce" >
+    update pd_produce
+    <set >
+      <if test="prname != null" >
+        prname = #{prname,jdbcType=VARCHAR},
+      </if>
+      <if test="brieftitle != null" >
+        brieftitle = #{brieftitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ptype != null" >
+        ptype = #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="nlimit != null" >
+        nlimit = #{nlimit,jdbcType=INTEGER},
+      </if>
+      <if test="plength != null" >
+        plength = #{plength,jdbcType=DECIMAL},
+      </if>
+      <if test="pwhidth != null" >
+        pwhidth = #{pwhidth,jdbcType=DECIMAL},
+      </if>
+      <if test="pheight != null" >
+        pheight = #{pheight,jdbcType=DECIMAL},
+      </if>
+      <if test="paddress != null" >
+        paddress = #{paddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ptexture != null" >
+        ptexture = #{ptexture,jdbcType=VARCHAR},
+      </if>
+      <if test="supplier != null" >
+        supplier = #{supplier,jdbcType=VARCHAR},
+      </if>
+      <if test="punit != null" >
+        punit = #{punit,jdbcType=VARCHAR},
+      </if>
+      <if test="pkg != null" >
+        pkg = #{pkg,jdbcType=DECIMAL},
+      </if>
+      <if test="marketprice != null" >
+        marketprice = #{marketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="costprice != null" >
+        costprice = #{costprice,jdbcType=DECIMAL},
+      </if>
+      <if test="floorprice != null" >
+        floorprice = #{floorprice,jdbcType=DECIMAL},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pimage != null" >
+        pimage = #{pimage,jdbcType=INTEGER},
+      </if>
+      <if test="pstate != null" >
+        pstate = #{pstate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where prid = #{prid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.pd.model.PdProduce" >
+    update pd_produce
+    set prname = #{prname,jdbcType=VARCHAR},
+      brieftitle = #{brieftitle,jdbcType=VARCHAR},
+      ptype = #{ptype,jdbcType=INTEGER},
+      nlimit = #{nlimit,jdbcType=INTEGER},
+      plength = #{plength,jdbcType=DECIMAL},
+      pwhidth = #{pwhidth,jdbcType=DECIMAL},
+      pheight = #{pheight,jdbcType=DECIMAL},
+      paddress = #{paddress,jdbcType=VARCHAR},
+      ptexture = #{ptexture,jdbcType=VARCHAR},
+      supplier = #{supplier,jdbcType=VARCHAR},
+      punit = #{punit,jdbcType=VARCHAR},
+      pkg = #{pkg,jdbcType=DECIMAL},
+      marketprice = #{marketprice,jdbcType=DECIMAL},
+      costprice = #{costprice,jdbcType=DECIMAL},
+      floorprice = #{floorprice,jdbcType=DECIMAL},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      pname = #{pname,jdbcType=VARCHAR},
+      pimage = #{pimage,jdbcType=INTEGER},
+      pstate = #{pstate,jdbcType=INTEGER}
+    where prid = #{prid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.ad.mapper.AdPermissionsMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.AdPermissions" >
+    <constructor >
+      <idArg column="pid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="level" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="paren_pid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pstate" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rdescribe" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, pname, level, paren_pid, pstate, rdescribe
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ad_permissions
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ad_permissions
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.AdPermissions" >
+    insert into ad_permissions (pid, pname, level, 
+      paren_pid, pstate, rdescribe
+      )
+    values (#{pid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{parenPid,jdbcType=INTEGER}, #{pstate,jdbcType=INTEGER}, #{rdescribe,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.AdPermissions" >
+    insert into ad_permissions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="parenPid != null" >
+        paren_pid,
+      </if>
+      <if test="pstate != null" >
+        pstate,
+      </if>
+      <if test="rdescribe != null" >
+        rdescribe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="parenPid != null" >
+        #{parenPid,jdbcType=INTEGER},
+      </if>
+      <if test="pstate != null" >
+        #{pstate,jdbcType=INTEGER},
+      </if>
+      <if test="rdescribe != null" >
+        #{rdescribe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.AdPermissions" >
+    update ad_permissions
+    <set >
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="parenPid != null" >
+        paren_pid = #{parenPid,jdbcType=INTEGER},
+      </if>
+      <if test="pstate != null" >
+        pstate = #{pstate,jdbcType=INTEGER},
+      </if>
+      <if test="rdescribe != null" >
+        rdescribe = #{rdescribe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.AdPermissions" >
+    update ad_permissions
+    set pname = #{pname,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      paren_pid = #{parenPid,jdbcType=INTEGER},
+      pstate = #{pstate,jdbcType=INTEGER},
+      rdescribe = #{rdescribe,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

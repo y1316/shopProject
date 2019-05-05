@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.pd.mapper.PdBrandMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.pd.model.PdBrand" >
+    <constructor >
+      <idArg column="bid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="blogo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="describe" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bid, blogo, bname, describe
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pd_brand
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pd_brand
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.pd.model.PdBrand" >
+    insert into pd_brand (bid, blogo, bname, 
+      describe)
+    values (#{bid,jdbcType=INTEGER}, #{blogo,jdbcType=VARCHAR}, #{bname,jdbcType=VARCHAR}, 
+      #{describe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.pd.model.PdBrand" >
+    insert into pd_brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="blogo != null" >
+        blogo,
+      </if>
+      <if test="bname != null" >
+        bname,
+      </if>
+      <if test="describe != null" >
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="blogo != null" >
+        #{blogo,jdbcType=VARCHAR},
+      </if>
+      <if test="bname != null" >
+        #{bname,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.pd.model.PdBrand" >
+    update pd_brand
+    <set >
+      <if test="blogo != null" >
+        blogo = #{blogo,jdbcType=VARCHAR},
+      </if>
+      <if test="bname != null" >
+        bname = #{bname,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.pd.model.PdBrand" >
+    update pd_brand
+    set blogo = #{blogo,jdbcType=VARCHAR},
+      bname = #{bname,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

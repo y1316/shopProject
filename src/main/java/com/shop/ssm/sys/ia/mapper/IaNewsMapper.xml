@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.ia.mapper.IaNewsMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ia.model.IaNews" >
+    <constructor >
+      <idArg column="nid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ntitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nbrieftitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ntype" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nabstract" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nwriter" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nsource" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nlimit" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nviewed" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nstate" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    nid, ntitle, nbrieftitle, ntype, nabstract, nwriter, nsource, nlimit, nviewed, nstate, 
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ia_news
+    where nid = #{nid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ia_news
+    where nid = #{nid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
+    insert into ia_news (nid, ntitle, nbrieftitle, 
+      ntype, nabstract, nwriter, 
+      nsource, nlimit, nviewed, 
+      nstate, content)
+    values (#{nid,jdbcType=INTEGER}, #{ntitle,jdbcType=VARCHAR}, #{nbrieftitle,jdbcType=VARCHAR}, 
+      #{ntype,jdbcType=INTEGER}, #{nabstract,jdbcType=VARCHAR}, #{nwriter,jdbcType=VARCHAR}, 
+      #{nsource,jdbcType=VARCHAR}, #{nlimit,jdbcType=INTEGER}, #{nviewed,jdbcType=INTEGER}, 
+      #{nstate,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
+    insert into ia_news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nid != null" >
+        nid,
+      </if>
+      <if test="ntitle != null" >
+        ntitle,
+      </if>
+      <if test="nbrieftitle != null" >
+        nbrieftitle,
+      </if>
+      <if test="ntype != null" >
+        ntype,
+      </if>
+      <if test="nabstract != null" >
+        nabstract,
+      </if>
+      <if test="nwriter != null" >
+        nwriter,
+      </if>
+      <if test="nsource != null" >
+        nsource,
+      </if>
+      <if test="nlimit != null" >
+        nlimit,
+      </if>
+      <if test="nviewed != null" >
+        nviewed,
+      </if>
+      <if test="nstate != null" >
+        nstate,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nid != null" >
+        #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="ntitle != null" >
+        #{ntitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nbrieftitle != null" >
+        #{nbrieftitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ntype != null" >
+        #{ntype,jdbcType=INTEGER},
+      </if>
+      <if test="nabstract != null" >
+        #{nabstract,jdbcType=VARCHAR},
+      </if>
+      <if test="nwriter != null" >
+        #{nwriter,jdbcType=VARCHAR},
+      </if>
+      <if test="nsource != null" >
+        #{nsource,jdbcType=VARCHAR},
+      </if>
+      <if test="nlimit != null" >
+        #{nlimit,jdbcType=INTEGER},
+      </if>
+      <if test="nviewed != null" >
+        #{nviewed,jdbcType=INTEGER},
+      </if>
+      <if test="nstate != null" >
+        #{nstate,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
+    update ia_news
+    <set >
+      <if test="ntitle != null" >
+        ntitle = #{ntitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nbrieftitle != null" >
+        nbrieftitle = #{nbrieftitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ntype != null" >
+        ntype = #{ntype,jdbcType=INTEGER},
+      </if>
+      <if test="nabstract != null" >
+        nabstract = #{nabstract,jdbcType=VARCHAR},
+      </if>
+      <if test="nwriter != null" >
+        nwriter = #{nwriter,jdbcType=VARCHAR},
+      </if>
+      <if test="nsource != null" >
+        nsource = #{nsource,jdbcType=VARCHAR},
+      </if>
+      <if test="nlimit != null" >
+        nlimit = #{nlimit,jdbcType=INTEGER},
+      </if>
+      <if test="nviewed != null" >
+        nviewed = #{nviewed,jdbcType=INTEGER},
+      </if>
+      <if test="nstate != null" >
+        nstate = #{nstate,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
+    update ia_news
+    set ntitle = #{ntitle,jdbcType=VARCHAR},
+      nbrieftitle = #{nbrieftitle,jdbcType=VARCHAR},
+      ntype = #{ntype,jdbcType=INTEGER},
+      nabstract = #{nabstract,jdbcType=VARCHAR},
+      nwriter = #{nwriter,jdbcType=VARCHAR},
+      nsource = #{nsource,jdbcType=VARCHAR},
+      nlimit = #{nlimit,jdbcType=INTEGER},
+      nviewed = #{nviewed,jdbcType=INTEGER},
+      nstate = #{nstate,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+</mapper>

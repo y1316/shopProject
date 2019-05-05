@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shop.ssm.sys.ad.mapper.AdminMapper" >
-  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.Admin" >
+<mapper namespace="com.shop.ssm.sys.ad.mapper.AdAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.AdAdmin" >
     <constructor >
       <idArg column="aid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -26,7 +26,7 @@
     delete from ad_admin
     where aid = #{aid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.AdAdmin" >
     insert into ad_admin (aid, rid, aname, 
       asex, atime, astate, 
       atel, aemail)
@@ -34,7 +34,7 @@
       #{asex,jdbcType=VARCHAR}, #{atime,jdbcType=TIMESTAMP}, #{astate,jdbcType=INTEGER}, 
       #{atel,jdbcType=VARCHAR}, #{aemail,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.AdAdmin" >
     insert into ad_admin
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="aid != null" >
@@ -89,7 +89,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.AdAdmin" >
     update ad_admin
     <set >
       <if test="rid != null" >
@@ -116,7 +116,7 @@
     </set>
     where aid = #{aid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.AdAdmin" >
     update ad_admin
     set rid = #{rid,jdbcType=INTEGER},
       aname = #{aname,jdbcType=VARCHAR},

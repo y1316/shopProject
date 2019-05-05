@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.or.mapper.OrOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.or.model.OrOrder" >
+    <constructor >
+      <idArg column="oid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="oestado" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="osum" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    oid, nid, oestado, osum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from or_order
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from or_order
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.or.model.OrOrder" >
+    insert into or_order (oid, nid, oestado, 
+      osum)
+    values (#{oid,jdbcType=INTEGER}, #{nid,jdbcType=INTEGER}, #{oestado,jdbcType=INTEGER}, 
+      #{osum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.or.model.OrOrder" >
+    insert into or_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="nid != null" >
+        nid,
+      </if>
+      <if test="oestado != null" >
+        oestado,
+      </if>
+      <if test="osum != null" >
+        osum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="nid != null" >
+        #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="oestado != null" >
+        #{oestado,jdbcType=INTEGER},
+      </if>
+      <if test="osum != null" >
+        #{osum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.or.model.OrOrder" >
+    update or_order
+    <set >
+      <if test="nid != null" >
+        nid = #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="oestado != null" >
+        oestado = #{oestado,jdbcType=INTEGER},
+      </if>
+      <if test="osum != null" >
+        osum = #{osum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.or.model.OrOrder" >
+    update or_order
+    set nid = #{nid,jdbcType=INTEGER},
+      oestado = #{oestado,jdbcType=INTEGER},
+      osum = #{osum,jdbcType=DECIMAL}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+</mapper>
