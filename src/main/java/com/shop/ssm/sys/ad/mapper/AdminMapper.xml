@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.ad.mapper.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.Admin" >
+    <constructor >
+      <idArg column="aid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="aname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="asex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="atime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="astate" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="atel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="aemail" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, rid, aname, asex, atime, astate, atel, aemail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ad_admin
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ad_admin
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+    insert into ad_admin (aid, rid, aname, 
+      asex, atime, astate, 
+      atel, aemail)
+    values (#{aid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, 
+      #{asex,jdbcType=VARCHAR}, #{atime,jdbcType=TIMESTAMP}, #{astate,jdbcType=INTEGER}, 
+      #{atel,jdbcType=VARCHAR}, #{aemail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+    insert into ad_admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="aname != null" >
+        aname,
+      </if>
+      <if test="asex != null" >
+        asex,
+      </if>
+      <if test="atime != null" >
+        atime,
+      </if>
+      <if test="astate != null" >
+        astate,
+      </if>
+      <if test="atel != null" >
+        atel,
+      </if>
+      <if test="aemail != null" >
+        aemail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="asex != null" >
+        #{asex,jdbcType=VARCHAR},
+      </if>
+      <if test="atime != null" >
+        #{atime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="astate != null" >
+        #{astate,jdbcType=INTEGER},
+      </if>
+      <if test="atel != null" >
+        #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null" >
+        #{aemail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+    update ad_admin
+    <set >
+      <if test="rid != null" >
+        rid = #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="asex != null" >
+        asex = #{asex,jdbcType=VARCHAR},
+      </if>
+      <if test="atime != null" >
+        atime = #{atime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="astate != null" >
+        astate = #{astate,jdbcType=INTEGER},
+      </if>
+      <if test="atel != null" >
+        atel = #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null" >
+        aemail = #{aemail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.Admin" >
+    update ad_admin
+    set rid = #{rid,jdbcType=INTEGER},
+      aname = #{aname,jdbcType=VARCHAR},
+      asex = #{asex,jdbcType=VARCHAR},
+      atime = #{atime,jdbcType=TIMESTAMP},
+      astate = #{astate,jdbcType=INTEGER},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>
