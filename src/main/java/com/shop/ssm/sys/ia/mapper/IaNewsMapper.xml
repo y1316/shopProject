@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.ssm.sys.ia.mapper.IaNewsMapper" >
+   <cache type="com.shop.ssm.base.redis.RedisCache" />
   <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ia.model.IaNews" >
     <constructor >
       <idArg column="nid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -16,6 +17,21 @@
       <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="ianews" type="com.shop.ssm.sys.ia.model.IaNews" >
+      <id column="nid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result   column="ntitle" property="ntitle" javaType="java.lang.String" />
+      <result  column="nbrieftitle" property="nbrieftitle" javaType="java.lang.String" />
+      <result  column="ntype" property="ntype" javaType="java.lang.Integer" />
+      <result  column="nabstract" property="nabstract" javaType="java.lang.String" />
+      <result  column="nwriter" property="nwriter" javaType="java.lang.String" />
+      <result  column="nsource" property="nsource" javaType="java.lang.String" />
+      <result  column="nlimit" property="nlimit" javaType="java.lang.Integer" />
+      <result column="nviewed" property="nviewed" javaType="java.lang.Integer" />
+      <result column="nstate" property="nstate" javaType="java.lang.Integer" />
+      <result column="content" property="content" javaType="java.lang.String" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     nid, ntitle, nbrieftitle, ntype, nabstract, nwriter, nsource, nlimit, nviewed, nstate, 
     content
@@ -26,16 +42,26 @@
     from ia_news
     where nid = #{nid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <select id="list" resultMap="ianews" parameterType="com.shop.ssm.sys.ia.model.IaNews">
+      SELECT *
+      FROM ia_news
+      WHERE 1=1
+      <if test="null!=ntitle and ''!=ntitle">
+      AND ntitle LIKE concat("%",#{ntitle,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ia_news
     where nid = #{nid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
-    insert into ia_news (nid, ntitle, nbrieftitle, 
+    insert into ia_news ( ntitle, nbrieftitle,
       ntype, nabstract, nwriter, 
       nsource, nlimit, nviewed, 
       nstate, content)
-    values (#{nid,jdbcType=INTEGER}, #{ntitle,jdbcType=VARCHAR}, #{nbrieftitle,jdbcType=VARCHAR}, 
+    values ( #{ntitle,jdbcType=VARCHAR}, #{nbrieftitle,jdbcType=VARCHAR},
       #{ntype,jdbcType=INTEGER}, #{nabstract,jdbcType=VARCHAR}, #{nwriter,jdbcType=VARCHAR}, 
       #{nsource,jdbcType=VARCHAR}, #{nlimit,jdbcType=INTEGER}, #{nviewed,jdbcType=INTEGER}, 
       #{nstate,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})

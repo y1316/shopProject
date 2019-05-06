@@ -1,13 +1,15 @@
 package com.shop.ssm.base.utils;
 
+import java.util.Map;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-import java.util.Map;
+
 
 public class PageTag extends BodyTagSupport {
 
-	private static final long serialVersionUID = -6554574361093255758L;
+	private static final long serialVersionUID = 8003507841172246203L;
 
 	private PageBean pageBean;
 
@@ -27,59 +29,66 @@ public class PageTag extends BodyTagSupport {
 	public int doStartTag() throws JspException {
 		try {
 			JspWriter out = pageContext.getOut();
-			out.println(this.toHTML());
+			out.println(this.toHtml());
 			return SKIP_BODY;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private String toHTML() {
-		if (null == pageBean || !pageBean.isPagination()) {
-			return "";
-		}
+	private String toHtml() {
 		StringBuffer bf = new StringBuffer();
-		// ���ɱ�������
-		bf.append("<form id='pageBeanForm' action='" + this.pageBean.getUrl() + "' method='post'>");
+		if (null == pageBean || !pageBean.isPagination()) {
+			return bf.toString();
+		}
+
+		// 1. 生成表单
+		bf.append("<form id='pageBeanForm' action='" + pageBean.getUrl() + "' method='post'>");
 		bf.append("<input type='hidden' name='page' value=''>");
-		String name = null;
-		String[] values = null;
 		for (Map.Entry<String, String[]> entry : pageBean.getParameterMap().entrySet()) {
-			name = entry.getKey();
+			String name = entry.getKey();
+			String[] values = entry.getValue();
 			if ("page".equals(name)) {
-				continue;// ͨ��js�����޸�
+				continue;
 			}
-			values = entry.getValue();
+
 			for (String value : values) {
 				bf.append("<input type='hidden' name='" + name + "' value='" + value + "'>");
 			}
 		}
 		bf.append("</form>");
 
-		// ���ɷ�ҳ��ť
-		bf.append("<div style='text-align: right;font-size: 12px;'>ÿҳ" + this.getPageBean().getRows() + "������"
-				+ this.pageBean.getTotal() + "������" + pageBean.getPage() + "ҳ����" + pageBean.getMaxPage()
-				+ "ҳ&nbsp;&nbsp;<a href='javascript:gotoPage(1)'>��&nbsp;&nbsp;ҳ</a>&nbsp;&nbsp;<a href='javascript:gotoPage("
-				+ pageBean.getPreviousPage() + ")'>��һҳ</a>&nbsp;&nbsp;<a href='javascript:gotoPage("
-				+ pageBean.getNextPage() + ")'>��һҳ</a>&nbsp;&nbsp;<a href='javascript:gotoPage(" + pageBean.getMaxPage()
-				+ ")'>ĩ&nbsp;&nbsp;ҳ</a>&nbsp;&nbsp;<input id='skipPage' type='text' style='text-align: center;font-size: 12px;width:50px;'>&nbsp;&nbsp;<a href='javascript:skipPage();'>GO</a></div>");
+		// 2. 生成按钮
+		bf.append("<div style='text-align: right;font-size: 12px;'>每页" + pageBean.getRows() + "条，共"
+				+ pageBean.getTotal() + "条，当前第" + pageBean.getPage() + "页，共" + pageBean.getMaxPage()
+				+ "页&nbsp;&nbsp;<a href='javascript:doGotoPage(1)'>首&nbsp;&nbsp;页</a>&nbsp;&nbsp;<a href='javascript:doGotoPage("
+				+ pageBean.getPreviousPage() + ")'>上一页</a>&nbsp;&nbsp;<a href='javascript:doGotoPage("
+				+ pageBean.getNextPage() + ")'>下一页</a>&nbsp;&nbsp;<a href='javascript:doGotoPage("
+				+ pageBean.getMaxPage()
+				+ ")'>尾&nbsp;&nbsp;页</a>&nbsp;&nbsp;<input id='pageNumber' type='text' style='text-align: center;width: 30px;'>&nbsp;&nbsp;<a href='javascript:doSkipPage();'>GO</a></div>");
 
-		// ����js
-		bf.append("<script>");
-		bf.append("function gotoPage(page){");
-		bf.append("  document.getElementById('pageBeanForm').page.value = page;");
-		bf.append("  document.getElementById('pageBeanForm').submit();");
+		// 3. 动态生成js
+		bf.append("<script type='text/javascript'>");
+		bf.append("function doGotoPage(page){");
+		bf.append("  var form = document.getElementById('pageBeanForm');");
+		bf.append("  form.page.value = page;");
+		bf.append("  form.submit();");
 		bf.append("}");
-		bf.append("var maxPage="+pageBean.getMaxPage()+";");
-		bf.append("function skipPage(){");
-		bf.append("  var page = document.getElementById('skipPage').value;");
-		bf.append("  if(!page||isNaN(page)||parseInt(page)<1||parseInt(page)>maxPage){");
-		bf.append("    alert('������1~8֮�������');");
+		bf.append("function doSkipPage(page){");
+		bf.append("  var page = document.getElementById('pageNumber').value;");
+		bf.append("  if(!page||isNaN(page)||parseInt(page)<1||parseInt(page)>"+pageBean.getMaxPage()+"){");
+		bf.append("    alert('页码必须为1~"+pageBean.getMaxPage()+"之间数字');");
+		bf.append("    document.getElementById('pageNumber').value = '';");
 		bf.append("    return;");
 		bf.append("  }");
-		bf.append("  gotoPage(page);");
+		bf.append("  doGotoPage(parseInt(page));");
 		bf.append("}");
 		bf.append("</script>");
+		bf.append("");
+		bf.append("");
+		bf.append("");
+		bf.append("");
+		bf.append("");
 		return bf.toString();
 	}
 }
