@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.ssm.sys.ia.mapper.IaStateMapper" >
+
   <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ia.model.IaState" >
     <constructor >
       <idArg column="sid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="sname" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="iastate" type="com.shop.ssm.sys.ia.model.IaState" >
+      <id column="sid" property="sid" javaType="java.lang.Integer" />
+      <result column="sname" property="sname" javaType="java.lang.String" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     sid, sname
   </sql>
@@ -16,13 +23,24 @@
     from ia_state
     where sid = #{sid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <select id="list" resultMap="iastate" parameterType="com.shop.ssm.sys.ia.model.IaState">
+      SELECT *
+      FROM ia_state
+      WHERE 1=1
+      <if test="null!=sname and ''!=sname">
+        AND sname LIKE concat("%",#{sname,jdbcType=VARCHAR},"%")
+      </if>
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ia_state
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.ssm.sys.ia.model.IaState" >
-    insert into ia_state (sid, sname)
-    values (#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR})
+    insert into ia_state (sname)
+    values (#{sname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.ia.model.IaState" >
     insert into ia_state

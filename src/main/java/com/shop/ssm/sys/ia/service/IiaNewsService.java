@@ -13,7 +13,7 @@ public interface IiaNewsService {
 
     int insertSelective(IaNews record);
 
-    IaNews selectByPrimaryKey(Integer nid);
+    IaNews selectByPrimaryKey(IaNews iaNews);
 
     int updateByPrimaryKeySelective(IaNews record);
 

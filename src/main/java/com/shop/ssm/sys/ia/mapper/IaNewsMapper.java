@@ -1,11 +1,10 @@
 package com.shop.ssm.sys.ia.mapper;
 
+import com.shop.ssm.base.utils.PageBean;
 import com.shop.ssm.sys.ia.model.IaNews;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface IaNewsMapper {
     int deleteByPrimaryKey(Integer nid);
 
@@ -19,5 +18,5 @@ public interface IaNewsMapper {
 
     int updateByPrimaryKey(IaNews record);
 
-    List<IaNews>list(IaNews iaNews);
+    List<IaNews> list(IaNews iaNews);
 }

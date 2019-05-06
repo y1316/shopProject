@@ -3,6 +3,8 @@ package com.shop.ssm.sys.ia.model;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 @ToString
 public class IaNews {
@@ -20,6 +22,8 @@ public class IaNews {
 
     private String nsource;
 
+    private java.sql.Timestamp updatetime;
+
     private Integer nlimit;
 
     private Integer nviewed;
@@ -28,7 +32,7 @@ public class IaNews {
 
     private String content;
 
-    public IaNews(Integer nid, String ntitle, String nbrieftitle, Integer ntype, String nabstract, String nwriter, String nsource, Integer nlimit, Integer nviewed, Integer nstate, String content) {
+    public IaNews(Integer nid, String ntitle, String nbrieftitle, Integer ntype, String nabstract, String nwriter, String nsource, java.sql.Timestamp updatetime, Integer nlimit, Integer nviewed, Integer nstate, String content) {
         this.nid = nid;
         this.ntitle = ntitle;
         this.nbrieftitle = nbrieftitle;
@@ -36,6 +40,7 @@ public class IaNews {
         this.nabstract = nabstract;
         this.nwriter = nwriter;
         this.nsource = nsource;
+        this.updatetime = updatetime;
         this.nlimit = nlimit;
         this.nviewed = nviewed;
         this.nstate = nstate;
@@ -100,6 +105,14 @@ public class IaNews {
 
     public void setNsource(String nsource) {
         this.nsource = nsource;
+    }
+
+    public java.sql.Timestamp getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(java.sql.Timestamp updatetime) {
+        this.updatetime = updatetime;
     }
 
     public Integer getNlimit() {

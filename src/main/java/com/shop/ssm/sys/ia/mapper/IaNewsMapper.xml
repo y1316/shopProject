@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.ssm.sys.ia.mapper.IaNewsMapper" >
-   <cache type="com.shop.ssm.base.redis.RedisCache" />
   <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ia.model.IaNews" >
     <constructor >
       <idArg column="nid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -11,6 +10,7 @@
       <arg column="nabstract" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="nwriter" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="nsource" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updateTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
       <arg column="nlimit" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="nviewed" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="nstate" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -19,22 +19,22 @@
   </resultMap>
 
   <resultMap id="ianews" type="com.shop.ssm.sys.ia.model.IaNews" >
-      <id column="nid" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <result   column="ntitle" property="ntitle" javaType="java.lang.String" />
-      <result  column="nbrieftitle" property="nbrieftitle" javaType="java.lang.String" />
-      <result  column="ntype" property="ntype" javaType="java.lang.Integer" />
-      <result  column="nabstract" property="nabstract" javaType="java.lang.String" />
-      <result  column="nwriter" property="nwriter" javaType="java.lang.String" />
-      <result  column="nsource" property="nsource" javaType="java.lang.String" />
-      <result  column="nlimit" property="nlimit" javaType="java.lang.Integer" />
+      <id column="nid" property="nid" javaType="java.lang.Integer" />
+      <result column="ntitle" property="ntitle" javaType="java.lang.String" />
+      <result column="nbrieftitle" property="nbrieftitle" javaType="java.lang.String" />
+      <result column="ntype" property="ntype" javaType="java.lang.Integer" />
+      <result column="nabstract" property="nabstract" javaType="java.lang.String" />
+      <result column="nwriter" property="nwriter" javaType="java.lang.String" />
+      <result column="nsource" property="nsource" javaType="java.lang.String" />
+      <result column="updateTime" property="updatetime" javaType="java.sql.Timestamp" />
+      <result column="nlimit" property="nlimit" javaType="java.lang.Integer" />
       <result column="nviewed" property="nviewed" javaType="java.lang.Integer" />
       <result column="nstate" property="nstate" javaType="java.lang.Integer" />
       <result column="content" property="content" javaType="java.lang.String" />
   </resultMap>
-
   <sql id="Base_Column_List" >
-    nid, ntitle, nbrieftitle, ntype, nabstract, nwriter, nsource, nlimit, nviewed, nstate, 
-    content
+    nid, ntitle, nbrieftitle, ntype, nabstract, nwriter, nsource, updateTime, nlimit, 
+    nviewed, nstate, content
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -43,28 +43,29 @@
     where nid = #{nid,jdbcType=INTEGER}
   </select>
 
-    <select id="list" resultMap="ianews" parameterType="com.shop.ssm.sys.ia.model.IaNews">
-      SELECT *
-      FROM ia_news
-      WHERE 1=1
-      <if test="null!=ntitle and ''!=ntitle">
+  <select id="list" resultMap="ianews" resultType="com.shop.ssm.sys.ia.model.IaNews">
+    select * FROM ia_news
+    where 1=1
+    <if test="null!=ntitle and ''!=ntitle">
       AND ntitle LIKE concat("%",#{ntitle,jdbcType=VARCHAR},"%")
-      </if>
-    </select>
+    </if>
+  </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ia_news
     where nid = #{nid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
-    insert into ia_news ( ntitle, nbrieftitle,
+    insert into ia_news (nid, ntitle, nbrieftitle, 
       ntype, nabstract, nwriter, 
-      nsource, nlimit, nviewed, 
-      nstate, content)
-    values ( #{ntitle,jdbcType=VARCHAR}, #{nbrieftitle,jdbcType=VARCHAR},
+      nsource, updateTime, nlimit, 
+      nviewed, nstate, content
+      )
+    values (#{nid,jdbcType=INTEGER}, #{ntitle,jdbcType=VARCHAR}, #{nbrieftitle,jdbcType=VARCHAR}, 
       #{ntype,jdbcType=INTEGER}, #{nabstract,jdbcType=VARCHAR}, #{nwriter,jdbcType=VARCHAR}, 
-      #{nsource,jdbcType=VARCHAR}, #{nlimit,jdbcType=INTEGER}, #{nviewed,jdbcType=INTEGER}, 
-      #{nstate,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
+      #{nsource,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{nlimit,jdbcType=INTEGER}, 
+      #{nviewed,jdbcType=INTEGER}, #{nstate,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.ia.model.IaNews" >
     insert into ia_news
@@ -89,6 +90,9 @@
       </if>
       <if test="nsource != null" >
         nsource,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
       </if>
       <if test="nlimit != null" >
         nlimit,
@@ -125,6 +129,9 @@
       <if test="nsource != null" >
         #{nsource,jdbcType=VARCHAR},
       </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
       <if test="nlimit != null" >
         #{nlimit,jdbcType=INTEGER},
       </if>
@@ -160,6 +167,9 @@
       <if test="nsource != null" >
         nsource = #{nsource,jdbcType=VARCHAR},
       </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
       <if test="nlimit != null" >
         nlimit = #{nlimit,jdbcType=INTEGER},
       </if>
@@ -183,6 +193,7 @@
       nabstract = #{nabstract,jdbcType=VARCHAR},
       nwriter = #{nwriter,jdbcType=VARCHAR},
       nsource = #{nsource,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
       nlimit = #{nlimit,jdbcType=INTEGER},
       nviewed = #{nviewed,jdbcType=INTEGER},
       nstate = #{nstate,jdbcType=INTEGER},

@@ -31,8 +31,8 @@ public class IaNewsImpl implements IiaNewsService {
     }
 
     @Override
-    public IaNews selectByPrimaryKey(Integer nid) {
-        return null;
+    public IaNews selectByPrimaryKey(IaNews iaNews) {
+        return iaNewsMapper.selectByPrimaryKey(iaNews.getNid());
     }
 
     @Override

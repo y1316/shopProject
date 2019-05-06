@@ -2,6 +2,8 @@ package com.shop.ssm.sys.ia.mapper;
 
 import com.shop.ssm.sys.ia.model.IaType;
 
+import java.util.List;
+
 public interface IaTypeMapper {
     int deleteByPrimaryKey(Integer tid);
 
@@ -14,4 +16,6 @@ public interface IaTypeMapper {
     int updateByPrimaryKeySelective(IaType record);
 
     int updateByPrimaryKey(IaType record);
+
+    List<IaType>list(IaType iaType);
 }
