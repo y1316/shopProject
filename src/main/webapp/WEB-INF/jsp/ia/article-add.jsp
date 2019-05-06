@@ -20,7 +20,11 @@
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
+<<<<<<< HEAD
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+=======
+<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+>>>>>>> origin/master
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <!--/meta 作为公共模版分离出去-->
@@ -140,8 +144,13 @@
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章内容：</label>
+<<<<<<< HEAD
 			<div class="formControls col-xs-8 col-sm-9"> 
 				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script> 
+=======
+			<div class="formControls col-xs-8 col-sm-9">
+				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script>
+>>>>>>> origin/master
 			</div>
 		</div>
 		<div class="row cl">
@@ -155,19 +164,34 @@
 </article>
 
 <!--_footer 作为公共模版分离出去-->
+<<<<<<< HEAD
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+=======
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+>>>>>>> origin/master
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script> 
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script> 
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script> 
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
+=======
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+>>>>>>> origin/master
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -176,7 +200,11 @@ $(function(){
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 	//表单验证
 	$("#form-article-add").validate({
 		rules:{
@@ -228,7 +256,11 @@ $(function(){
 			parent.layer.close(index);
 		}
 	});
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 	$list = $("#fileList"),
 	$btn = $("#btn-star"),
 	state = "pending",
@@ -237,6 +269,7 @@ $(function(){
 	var uploader = WebUploader.create({
 		auto: true,
 		swf: 'lib/webuploader/0.1.5/Uploader.swf',
+<<<<<<< HEAD
 	
 		// 文件接收服务端。
 		server: 'fileupload.php',
@@ -245,6 +278,16 @@ $(function(){
 		// 内部根据当前运行是创建，可能是input元素，也可能是flash.
 		pick: '#filePicker',
 	
+=======
+
+		// 文件接收服务端。
+		server: 'fileupload.php',
+
+		// 选择文件的按钮。可选。
+		// 内部根据当前运行是创建，可能是input元素，也可能是flash.
+		pick: '#filePicker',
+
+>>>>>>> origin/master
 		// 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
 		resize: false,
 		// 只允许选择图片文件。
@@ -264,7 +307,11 @@ $(function(){
 		),
 		$img = $li.find('img');
 		$list.append( $li );
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 		// 创建缩略图
 		// 如果为非图片文件，可以不用调用此方法。
 		// thumbnailWidth x thumbnailHeight 为 100 x 100
@@ -273,7 +320,11 @@ $(function(){
 				$img.replaceWith('<span>不能预览</span>');
 				return;
 			}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 			$img.attr( 'src', src );
 		}, thumbnailWidth, thumbnailHeight );
 	});
@@ -281,7 +332,11 @@ $(function(){
 	uploader.on( 'uploadProgress', function( file, percentage ) {
 		var $li = $( '#'+file.id ),
 			$percent = $li.find('.progress-box .sr-only');
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 		// 避免重复创建
 		if ( !$percent.length ) {
 			$percent = $('<div class="progress-box"><span class="progress-bar radius"><span class="sr-only" style="width:0%"></span></span></div>').appendTo( $li ).find('.sr-only');
@@ -289,17 +344,29 @@ $(function(){
 		$li.find(".state").text("上传中");
 		$percent.css( 'width', percentage * 100 + '%' );
 	});
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 	// 文件上传成功，给item添加成功class, 用样式标记上传成功。
 	uploader.on( 'uploadSuccess', function( file ) {
 		$( '#'+file.id ).addClass('upload-state-success').find(".state").text("已上传");
 	});
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 	// 文件上传失败，显示上传出错。
 	uploader.on( 'uploadError', function( file ) {
 		$( '#'+file.id ).addClass('upload-state-error').find(".state").text("上传出错");
 	});
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 	// 完成上传完了，成功或者失败，先删除进度条。
 	uploader.on( 'uploadComplete', function( file ) {
 		$( '#'+file.id ).find('.progress-box').fadeOut();
@@ -327,6 +394,7 @@ $(function(){
             uploader.upload();
         }
     });
+<<<<<<< HEAD
 	
 	var ue = UE.getEditor('editor');
 	
@@ -334,4 +402,12 @@ $(function(){
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
+=======
+
+	var ue = UE.getEditor('editor');
+
+});
+</script>
+<!--/请在上方写此页面业务相关的脚本--></div></body>
+>>>>>>> origin/master
 </html>
