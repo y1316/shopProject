@@ -14,10 +14,159 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/shop/shop.welcome")
+    @RequestMapping("/shop/toWelcome")
     public String toWelcome(){
         return "welcome";
     }
+
+    @RequestMapping("/shop/toArticleList")
+    public String toArticleList(){
+        return "ia/article-list";
+    }
+
+    @RequestMapping("/shop/toOrderList")
+    public String toOrderList(){
+        return "or/order-list";
+    }
+
+    @RequestMapping("/shop/toProductBrand")
+    public String toProductBrand(){
+        return "pd/product-brand";
+    }
+
+    @RequestMapping("/shop/toProductCategory")
+    public String toProductCategory(){
+        return "pd/product-category";
+    }
+
+    @RequestMapping("/shop/toProductCategoryAdd")
+    public String toProductCategoryAdd(){
+        return "pd/product-category-add";
+    }
+
+    @RequestMapping("/shop/toFeedbackList")
+    public String toFeedbackList(){
+        return "op/feedback-list";
+    }
+
+    @RequestMapping("/shop/toProductList")
+    public String toProductList(){
+        return "pd/product-list";
+    }
+
+    @RequestMapping("/shop/toMemberList")
+    public String toMemberList(){
+        return "me/member-list";
+    }
+
+    @RequestMapping("/shop/toMemberDel")
+    public String toMemberDel(){
+        return "me/member-del";
+    }
+
+    @RequestMapping("/shop/toMemberLevel")
+    public String toMemberLevel(){
+        return "me/member-level";
+    }
+
+    @RequestMapping("/shop/toMemberScoreoperation")
+    public String toMemberScoreoperation(){
+        return "me/member-scoreoperation";
+    }
+
+    @RequestMapping("/shop/toMemberRecordBrowse")
+    public String toMemberRecordBrowse(){
+        return "me/member-record-browse";
+    }
+
+    @RequestMapping("/shop/toMemberRecordDownload")
+    public String toMemberRecordDownload(){
+        return "me/member-record-download";
+    }
+
+    @RequestMapping("/shop/toMemberRecordShare")
+    public String toMemberRecordShare(){
+        return "me/member-record-share";
+    }
+
+    @RequestMapping("/shop/toMemberRecordDetails")
+    public String toMemberRecordDetails(){
+        return "me/member-record-details";
+    }
+
+    @RequestMapping("/shop/toAdminRole")
+    public String toAdminRole(){
+        return "admin/admin-role";
+    }
+
+    @RequestMapping("/shop/toAdminPermission")
+    public String toAdminPermission(){
+        return "admin/admin-permission";
+    }
+
+    @RequestMapping("/shop/toAdminList")
+    public String toAdminList(){
+        return "admin/admin-list";
+    }
+
+
+    @RequestMapping("/shop/toChartsSt")
+    public String toChartsSt(){
+        return "st/charts-1";
+    }
+
+    @RequestMapping("/shop/toChartsNd")
+    public String toChartsNd(){
+        return "st/charts-2";
+    }
+
+    @RequestMapping("/shop/toChartsRd")
+    public String toChartsRd(){
+        return "st/charts-3";
+    }
+    @RequestMapping("/shop/toChartsFourth")
+    public String toChartsFourth(){
+        return "st/charts-4";
+    }
+    @RequestMapping("/shop/toChartsFifth")
+    public String toChartsFifth(){
+        return "st/charts-5";
+    }
+    @RequestMapping("/shop/toChartsSixth")
+    public String toChartsSixth(){
+        return "st/charts-6";
+    }
+
+    @RequestMapping("/shop/toChartsSeventh")
+    public String toChartsSeventh(){
+        return "st/charts-7";
+    }
+
+    @RequestMapping("/shop/toSystemBase")
+    public String toSystemBase(){
+        return "sys/system-base";
+    }
+
+    @RequestMapping("/shop/toSystemCategory")
+    public String toSystemCategory(){
+        return "sys/system-category";
+    }
+
+    @RequestMapping("/shop/toSystemData")
+    public String toSystemData(){
+        return "sys/system-data";
+    }
+
+    @RequestMapping("/shop/toSystemShielding")
+    public String toSystemShielding(){
+        return "sys/system-shielding";
+    }
+
+    @RequestMapping("/shop/toSystemLog")
+    public String toSystemLog(){
+        return "sys/system-log";
+    }
+
 
     @RequestMapping("/i18n")
     public String toI18n(String locale, HttpSession session){
