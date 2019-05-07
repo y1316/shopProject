@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <%@include file="/common/head.jsp"%>
@@ -26,17 +27,14 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 品牌管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="text-c">
-		<form class="Huiform" method="post" action="" target="_self">
-			<input type="text" placeholder="分类名称" value="" class="input-text" style="width:120px">
+		<form class="Huiform" method="post" action="${ctx}/product-brand/addPdBrand" target="_self" modelAttribute="pb">
+			<input type="text" placeholder="品牌名称" value="" class="input-text" style="width:120px">
 			<span class="btn-upload form-group">
 			<input class="input-text upload-url" type="text" name="uploadfile-2" id="uploadfile-2" readonly style="width:200px">
-			<a href="javascript:void();" class="btn btn-primary upload-btn"><i class="Hui-iconfont">&#xe642;</i> 上传logo</a>
+			<i class="Hui-iconfont">&#xe642;</i> 上传logo</a>
 			<input type="file" multiple name="file-2" class="input-file">
 			</span> <span class="select-box" style="width:150px">
-			<select class="select" name="brandclass" size="1">
-				<option value="1" selected>国内品牌</option>
-				<option value="0">国外品牌</option>
-			</select>
+			<input type="text" placeholder="具体描述" value="" class="input-text" style="width:200px">
 			</span><button type="button" class="btn btn-success" id="" name="" onClick="picture_colume_add(this);"><i class="Hui-iconfont">&#xe600;</i> 添加</button>
 		</form>
 	</div>
@@ -47,7 +45,6 @@
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="70">ID</th>
-				<th width="80">排序</th>
 				<th width="200">LOGO</th>
 				<th width="120">品牌名称</th>
 				<th>具体描述</th>
@@ -55,15 +52,16 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr class="text-c">
-				<td><input name="" type="checkbox" value=""></td>
-				<td>1</td>
-				<td><input type="text" class="input-text text-c" value="1"></td>
-				<td><img src="temp/brand/dongpeng.jpeg"></td>
-				<td class="text-l"><img title="国内品牌" src="static/h-ui.admin/images/cn.gif"> 东鹏</td>
-				<td class="text-l">东鹏陶瓷被评为“中国名牌”、“国家免检产品”、“中国驰名商标”、http://www.dongpeng.net/</td>
-				<td class="f-14 product-brand-manage"><a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-			</tr>
+			<c:forEach var="v" items="${pdBrandList}">
+				<tr class="text-c">
+					<td><input name="" type="checkbox" value=""></td>
+					<td>${v.bid}</td>
+					<td><img src="${v.blogo}"></td>
+					<td class="text-l"><img title="国内品牌" src="static/h-ui.admin/images/cn.gif">${v.bname}</td>
+					<td class="text-l">${v.bdescribe}</td>
+					<td class="f-14 product-brand-manage"><a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>

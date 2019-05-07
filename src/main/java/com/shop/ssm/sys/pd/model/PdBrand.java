@@ -1,5 +1,10 @@
 package com.shop.ssm.sys.pd.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+@Component
+@ToString
 public class PdBrand {
     private Integer bid;
 
@@ -7,13 +12,13 @@ public class PdBrand {
 
     private String bname;
 
-    private String describe;
+    private String bdescribe;
 
-    public PdBrand(Integer bid, String blogo, String bname, String describe) {
+    public PdBrand(Integer bid, String blogo, String bname, String bdescribe) {
         this.bid = bid;
         this.blogo = blogo;
         this.bname = bname;
-        this.describe = describe;
+        this.bdescribe = bdescribe;
     }
 
     public PdBrand() {
@@ -44,11 +49,11 @@ public class PdBrand {
         this.bname = bname;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getBdescribe() {
+        return bdescribe;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setBdescribe(String describe) {
+        this.bdescribe = describe;
     }
 }

@@ -25,9 +25,9 @@
   </delete>
   <insert id="insert" parameterType="com.shop.ssm.sys.im.model.ImPicture" >
     insert into im_picture (file_id, real_name, content_type, 
-      url, update_datetime)
+      url)
     values (#{fileId,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{contentType,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR}, #{updateDatetime,jdbcType=TIMESTAMP})
+      #{url,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.im.model.ImPicture" >
     insert into im_picture

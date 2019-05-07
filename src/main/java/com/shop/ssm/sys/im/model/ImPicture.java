@@ -1,8 +1,14 @@
 package com.shop.ssm.sys.im.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class ImPicture {
+@Component
+@ToString
+public class ImPicture implements Serializable {
     private String fileId;
 
     private String realName;

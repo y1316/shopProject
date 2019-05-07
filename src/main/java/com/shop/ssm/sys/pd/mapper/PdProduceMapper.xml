@@ -21,9 +21,32 @@
       <arg column="floorprice" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="starttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="pname" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="pimage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pimage" jdbcType="INTEGER" javaType="java.lang.String" />
       <arg column="pstate" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
+  </resultMap>
+
+  <resultMap id="row1" type="com.shop.ssm.sys.pd.model.PdProduce" >
+      <id column="prid" property="prid" javaType="java.lang.Integer" />
+      <result column="prname" property="prname" javaType="java.lang.String" />
+      <result column="brieftitle" property="brieftitle" javaType="java.lang.String" />
+      <result column="ptype" property="ptype" javaType="java.lang.Integer" />
+      <result column="nlimit" property="nlimit" javaType="java.lang.Integer" />
+      <result column="plength" property="plength" javaType="java.math.BigDecimal" />
+      <result column="pwhidth" property="pwhidth" javaType="java.math.BigDecimal" />
+      <result column="pheight" property="pheight" javaType="java.math.BigDecimal" />
+      <result column="paddress" property="paddress" javaType="java.lang.String" />
+      <result column="ptexture" property="ptexture" javaType="java.lang.String" />
+      <result column="supplier" property="supplier" javaType="java.lang.String" />
+      <result column="punit" property="punit" javaType="java.lang.String" />
+      <result column="pkg" property="pkg" javaType="java.math.BigDecimal" />
+      <result column="marketprice" property="marketprice" javaType="java.math.BigDecimal" />
+      <result column="costprice" property="costprice" javaType="java.math.BigDecimal" />
+      <result column="floorprice" property="floorprice" javaType="java.math.BigDecimal" />
+      <result column="starttime" property="starttime" javaType="java.util.Date" />
+      <result column="pname" property="pname" javaType="java.lang.String" />
+      <result column="pimage" property="pimage" javaType="java.lang.String" />
+      <result column="pstate" property="pstate" javaType="java.lang.Integer" />
   </resultMap>
   <sql id="Base_Column_List" >
     prid, prname, brieftitle, ptype, nlimit, plength, pwhidth, pheight, paddress, ptexture, 
@@ -36,7 +59,15 @@
     from pd_produce
     where prid = #{prid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="row1" resultType="com.shop.ssm.sys.pd.model.PdProduce">
+      select *
+      from pd_produce
+      where 1=1
+      <if test="null!=prname and ''!=prname">
+        AND prname LIKE concat("%",#{prname,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from pd_produce
     where prid = #{prid,jdbcType=INTEGER}
   </delete>
@@ -54,7 +85,7 @@
       #{ptexture,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}, #{punit,jdbcType=VARCHAR}, 
       #{pkg,jdbcType=DECIMAL}, #{marketprice,jdbcType=DECIMAL}, #{costprice,jdbcType=DECIMAL}, 
       #{floorprice,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, #{pname,jdbcType=VARCHAR}, 
-      #{pimage,jdbcType=INTEGER}, #{pstate,jdbcType=INTEGER})
+      #{pimage,jdbcType=VARCHAR}, #{pstate,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.pd.model.PdProduce" >
     insert into pd_produce
@@ -176,7 +207,7 @@
         #{pname,jdbcType=VARCHAR},
       </if>
       <if test="pimage != null" >
-        #{pimage,jdbcType=INTEGER},
+        #{pimage,jdbcType=VARCHAR},
       </if>
       <if test="pstate != null" >
         #{pstate,jdbcType=INTEGER},
@@ -238,7 +269,7 @@
         pname = #{pname,jdbcType=VARCHAR},
       </if>
       <if test="pimage != null" >
-        pimage = #{pimage,jdbcType=INTEGER},
+        pimage = #{pimage,jdbcType=VARCHAR},
       </if>
       <if test="pstate != null" >
         pstate = #{pstate,jdbcType=INTEGER},
@@ -265,7 +296,7 @@
       floorprice = #{floorprice,jdbcType=DECIMAL},
       starttime = #{starttime,jdbcType=TIMESTAMP},
       pname = #{pname,jdbcType=VARCHAR},
-      pimage = #{pimage,jdbcType=INTEGER},
+      pimage = #{pimage,jdbcType=VARCHAR},
       pstate = #{pstate,jdbcType=INTEGER}
     where prid = #{prid,jdbcType=INTEGER}
   </update>

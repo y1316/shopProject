@@ -1,8 +1,12 @@
 package com.shop.ssm.sys.pd.mapper;
 
 import com.shop.ssm.sys.pd.model.PdBrand;
+import com.shop.ssm.sys.pd.model.PdProduce;
+import org.springframework.stereotype.Repository;
 
-public interface PdBrandMapper {
+import java.util.List;
+@Repository
+public interface PdBrandMapper{
     int deleteByPrimaryKey(Integer bid);
 
     int insert(PdBrand record);
@@ -14,4 +18,6 @@ public interface PdBrandMapper {
     int updateByPrimaryKeySelective(PdBrand record);
 
     int updateByPrimaryKey(PdBrand record);
+
+    List<PdBrand> list(PdBrand pdBrand);
 }

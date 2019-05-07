@@ -6,11 +6,18 @@
       <idArg column="bid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="blogo" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="bname" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="describe" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bdescribe" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.shop.ssm.sys.pd.model.PdBrand" >
+      <id column="bid" property="bid" javaType="java.lang.Integer" />
+      <result column="blogo" property="blogo" javaType="java.lang.String" />
+      <result column="bname" property="bname" javaType="java.lang.String" />
+      <result column="bdescribe" property="bdescribe" javaType="java.lang.String" />
+  </resultMap>
   <sql id="Base_Column_List" >
-    bid, blogo, bname, describe
+    bid, blogo, bname, bdescribe
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -18,15 +25,22 @@
     from pd_brand
     where bid = #{bid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="row1" resultType="com.shop.ssm.sys.pd.model.PdBrand">
+      select *
+      from pd_brand
+      where 1=1
+      <if test="null!=bname and ''!=bname">
+        AND bname LIKE concat("%",#{bname,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from pd_brand
     where bid = #{bid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.ssm.sys.pd.model.PdBrand" >
-    insert into pd_brand (bid, blogo, bname, 
-      describe)
+    insert into pd_brand (bid, blogo, bname,bdescribe)
     values (#{bid,jdbcType=INTEGER}, #{blogo,jdbcType=VARCHAR}, #{bname,jdbcType=VARCHAR}, 
-      #{describe,jdbcType=VARCHAR})
+      #{bdescribe,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.pd.model.PdBrand" >
     insert into pd_brand
@@ -40,8 +54,8 @@
       <if test="bname != null" >
         bname,
       </if>
-      <if test="describe != null" >
-        describe,
+      <if test="bdescribe != null" >
+        bdescribe,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -54,8 +68,8 @@
       <if test="bname != null" >
         #{bname,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null" >
-        #{describe,jdbcType=VARCHAR},
+      <if test="bdescribe != null" >
+        #{bdescribe,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -68,8 +82,8 @@
       <if test="bname != null" >
         bname = #{bname,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null" >
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="bdescribe != null" >
+        bdescribe = #{bdescribe,jdbcType=VARCHAR},
       </if>
     </set>
     where bid = #{bid,jdbcType=INTEGER}
@@ -78,7 +92,7 @@
     update pd_brand
     set blogo = #{blogo,jdbcType=VARCHAR},
       bname = #{bname,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR}
+      bdescribe = #{bdescribe,jdbcType=VARCHAR}
     where bid = #{bid,jdbcType=INTEGER}
   </update>
 </mapper>

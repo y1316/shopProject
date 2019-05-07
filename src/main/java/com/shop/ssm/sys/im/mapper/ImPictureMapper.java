@@ -1,7 +1,9 @@
 package com.shop.ssm.sys.im.mapper;
 
 import com.shop.ssm.sys.im.model.ImPicture;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ImPictureMapper {
     int deleteByPrimaryKey(String fileId);
 
