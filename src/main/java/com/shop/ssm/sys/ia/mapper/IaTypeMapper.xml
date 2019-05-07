@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.ssm.sys.ia.mapper.IaTypeMapper" >
+
   <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ia.model.IaType" >
     <constructor >
       <idArg column="tid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -8,6 +9,13 @@
       <arg column="tnote" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="iatype" type="com.shop.ssm.sys.ia.model.IaType" >
+      <id column="tid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result column="tname" property="tname" javaType="java.lang.String" />
+      <result column="tnote" property="tnote" javaType="java.lang.String" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     tid, tname, tnote
   </sql>
@@ -17,16 +25,28 @@
     from ia_type
     where tid = #{tid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <select id="list" resultMap="iatype" parameterType="com.shop.ssm.sys.ia.model.IaType">
+      SELECT *
+      FROM ia_type
+      WHERE 1=1
+      <if test="null!=tname and ''!=tname">
+        AND tname LIKE concat("%",#{tname,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ia_type
     where tid = #{tid,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.shop.ssm.sys.ia.model.IaType" >
-    insert into ia_type (tid, tname, tnote
+    insert into ia_type (tname, tnote
       )
-    values (#{tid,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}, #{tnote,jdbcType=VARCHAR}
+    values (#{tname,jdbcType=VARCHAR}, #{tnote,jdbcType=VARCHAR}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.ia.model.IaType" >
     insert into ia_type
     <trim prefix="(" suffix=")" suffixOverrides="," >

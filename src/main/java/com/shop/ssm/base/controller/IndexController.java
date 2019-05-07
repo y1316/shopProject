@@ -29,6 +29,28 @@ public class IndexController {
         return "ia/article-add";
     }
 
+    @RequestMapping("/shop/toArticle")
+    public String toArticle(){
+        return "ia/article-add";
+    }
+
+    @RequestMapping("/shop/toproduce")
+    public String toproduct(){
+        return "ia/picture-add";
+    }
+
+    @RequestMapping("/shop/topicturt")
+    public String topicture(){
+        return "ia/product-add";
+    }
+
+    @RequestMapping("/shop/tomember")
+    public String tomember(){
+        return "ia/member-add";
+    }
+
+
+
     @RequestMapping("/shop/toOrderList")
     public String toOrderList(){
         return "or/order-list";

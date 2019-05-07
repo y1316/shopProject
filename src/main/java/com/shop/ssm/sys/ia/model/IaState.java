@@ -1,5 +1,10 @@
 package com.shop.ssm.sys.ia.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+@Component
+@ToString
 public class IaState {
     private Integer sid;
 
