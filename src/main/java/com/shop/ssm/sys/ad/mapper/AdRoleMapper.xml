@@ -9,6 +9,16 @@
       <arg column="rdescribe" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+  <resultMap id="adList" type="com.shop.ssm.sys.ad.model.AdRole">
+    <id column="rid" property="rid" javaType="java.lang.Integer"/>
+    <result column="rname" property="rname" javaType="java.lang.String"/>
+    <result column="astate" property="astate" javaType="java.lang.Integer"/>
+    <result column="rdescribe" property="rdescribe" javaType="java.lang.String"/>
+    <association property="rlState" javaType="com.shop.ssm.sys.ad.model.RlState">
+      <id column="sid" property="sid" javaType="java.lang.Integer"/>
+      <result column="sname" property="sname" javaType="java.lang.String"/>
+    </association>
+  </resultMap>
   <sql id="Base_Column_List" >
     rid, rname, astate, rdescribe
   </sql>
@@ -18,7 +28,15 @@
     from ad_role
     where rid = #{rid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="adList" parameterType="com.shop.ssm.sys.ad.model.AdRole">
+      select *
+      from ad_role
+      where 1=1
+      <if test="null != pname and ''!=pname">
+        AND rname LIKE CONCAT("%",#{rname,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ad_role
     where rid = #{rid,jdbcType=INTEGER}
   </delete>

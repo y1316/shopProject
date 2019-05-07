@@ -1,7 +1,9 @@
 package com.shop.ssm.sys.ad.mapper;
 
 import com.shop.ssm.sys.ad.model.PsState;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PsStateMapper {
     int deleteByPrimaryKey(Integer sid);
 

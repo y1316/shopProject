@@ -7,6 +7,7 @@
       <arg column="sname" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
   <sql id="Base_Column_List" >
     sid, sname
   </sql>
