@@ -1,9 +1,11 @@
 package com.shop.ssm.base.utils;
 
+import java.util.Map;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-import java.util.Map;
+
 
 public class PageTag extends BodyTagSupport {
 
@@ -39,7 +41,7 @@ public class PageTag extends BodyTagSupport {
 			return "";
 		}
 		StringBuffer bf = new StringBuffer();
-		// ���ɱ�������
+		// 生成表单及参数
 		bf.append("<form id='pageBeanForm' action='" + this.pageBean.getUrl() + "' method='post'>");
 		bf.append("<input type='hidden' name='page' value=''>");
 		String name = null;
@@ -47,7 +49,7 @@ public class PageTag extends BodyTagSupport {
 		for (Map.Entry<String, String[]> entry : pageBean.getParameterMap().entrySet()) {
 			name = entry.getKey();
 			if ("page".equals(name)) {
-				continue;// ͨ��js�����޸�
+				continue;// 通过js代码修改
 			}
 			values = entry.getValue();
 			for (String value : values) {
@@ -56,15 +58,15 @@ public class PageTag extends BodyTagSupport {
 		}
 		bf.append("</form>");
 
-		// ���ɷ�ҳ��ť
-		bf.append("<div style='text-align: right;font-size: 12px;'>ÿҳ" + this.getPageBean().getRows() + "������"
-				+ this.pageBean.getTotal() + "������" + pageBean.getPage() + "ҳ����" + pageBean.getMaxPage()
-				+ "ҳ&nbsp;&nbsp;<a href='javascript:gotoPage(1)'>��&nbsp;&nbsp;ҳ</a>&nbsp;&nbsp;<a href='javascript:gotoPage("
-				+ pageBean.getPreviousPage() + ")'>��һҳ</a>&nbsp;&nbsp;<a href='javascript:gotoPage("
-				+ pageBean.getNextPage() + ")'>��һҳ</a>&nbsp;&nbsp;<a href='javascript:gotoPage(" + pageBean.getMaxPage()
-				+ ")'>ĩ&nbsp;&nbsp;ҳ</a>&nbsp;&nbsp;<input id='skipPage' type='text' style='text-align: center;font-size: 12px;width:50px;'>&nbsp;&nbsp;<a href='javascript:skipPage();'>GO</a></div>");
+		// 生成分页按钮
+		bf.append("<div style='text-align: right;font-size: 12px;'>每页" + this.getPageBean().getRows() + "条，共"
+				+ this.pageBean.getTotal() + "条，第" + pageBean.getPage() + "页，共" + pageBean.getMaxPage()
+				+ "页&nbsp;&nbsp;<a href='javascript:gotoPage(1)'>首&nbsp;&nbsp;页</a>&nbsp;&nbsp;<a href='javascript:gotoPage("
+				+ pageBean.getPreviousPage() + ")'>上一页</a>&nbsp;&nbsp;<a href='javascript:gotoPage("
+				+ pageBean.getNextPage() + ")'>下一页</a>&nbsp;&nbsp;<a href='javascript:gotoPage(" + pageBean.getMaxPage()
+				+ ")'>末&nbsp;&nbsp;页</a>&nbsp;&nbsp;<input id='skipPage' type='text' style='text-align: center;font-size: 12px;width:50px;'>&nbsp;&nbsp;<a href='javascript:skipPage();'>GO</a></div>");
 
-		// ����js
+		// 生成js
 		bf.append("<script>");
 		bf.append("function gotoPage(page){");
 		bf.append("  document.getElementById('pageBeanForm').page.value = page;");
@@ -74,7 +76,7 @@ public class PageTag extends BodyTagSupport {
 		bf.append("function skipPage(){");
 		bf.append("  var page = document.getElementById('skipPage').value;");
 		bf.append("  if(!page||isNaN(page)||parseInt(page)<1||parseInt(page)>maxPage){");
-		bf.append("    alert('������1~8֮�������');");
+		bf.append("    alert('请输入1~8之间的数字');");
 		bf.append("    return;");
 		bf.append("  }");
 		bf.append("  gotoPage(page);");

@@ -40,11 +40,11 @@ public class PdProduce {
 
     private String pname;
 
-    private Integer pimage;
+    private String pimage;
 
     private Integer pstate;
 
-    public PdProduce(Integer prid, String prname, String brieftitle, Integer ptype, Integer nlimit, BigDecimal plength, BigDecimal pwhidth, BigDecimal pheight, String paddress, String ptexture, String supplier, String punit, BigDecimal pkg, BigDecimal marketprice, BigDecimal costprice, BigDecimal floorprice, Date starttime, String pname, Integer pimage, Integer pstate) {
+    public PdProduce(Integer prid, String prname, String brieftitle, Integer ptype, Integer nlimit, BigDecimal plength, BigDecimal pwhidth, BigDecimal pheight, String paddress, String ptexture, String supplier, String punit, BigDecimal pkg, BigDecimal marketprice, BigDecimal costprice, BigDecimal floorprice, Date starttime, String pname, String pimage, Integer pstate) {
         this.prid = prid;
         this.prname = prname;
         this.brieftitle = brieftitle;
@@ -215,11 +215,11 @@ public class PdProduce {
         this.pname = pname;
     }
 
-    public Integer getPimage() {
+    public String getPimage() {
         return pimage;
     }
 
-    public void setPimage(Integer pimage) {
+    public void setPimage(String pimage) {
         this.pimage = pimage;
     }
 

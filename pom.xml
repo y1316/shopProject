@@ -31,6 +31,7 @@
     <disruptor.version>3.2.0</disruptor.version>
     <lombok.version>1.18.0</lombok.version>
     <jackson.version>2.9.3</jackson.version>
+    <shiro.version>1.2.5</shiro.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
@@ -338,6 +339,41 @@ value="LOG4J2"/>-->
       <artifactId>hibernate-validator</artifactId>
       <version>6.0.7.Final</version>
     </dependency>
+
+    <!-- **********************  shiro配置  ********************** -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>${shiro.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>slf4j-api</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>${shiro.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>ehcache-core</artifactId>
+          <groupId>net.sf.ehcache</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <!--shiro end-->
   </dependencies>
 
   <build>

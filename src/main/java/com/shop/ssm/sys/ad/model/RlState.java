@@ -1,9 +1,15 @@
 package com.shop.ssm.sys.ad.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+@Component
+@ToString
 public class RlState {
     private Integer sid;
 
     private String sname;
+
 
     public RlState(Integer sid, String sname) {
         this.sid = sid;

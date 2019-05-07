@@ -1,5 +1,10 @@
 package com.shop.ssm.sys.ad.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+@Component
+@ToString
 public class AdPermissions {
     private Integer pid;
 
@@ -13,13 +18,36 @@ public class AdPermissions {
 
     private String rdescribe;
 
-    public AdPermissions(Integer pid, String pname, String level, Integer parenPid, Integer pstate, String rdescribe) {
+    private Integer ptype;
+
+    private PsState psState;
+
+    private PsType psType;
+
+    public AdPermissions(Integer pid, String pname, String level, Integer parenPid, Integer pstate, String rdescribe, Integer ptype) {
         this.pid = pid;
         this.pname = pname;
         this.level = level;
         this.parenPid = parenPid;
         this.pstate = pstate;
         this.rdescribe = rdescribe;
+        this.ptype = ptype;
+    }
+
+    public PsState getPsState() {
+        return psState;
+    }
+
+    public void setPsState(PsState psState) {
+        this.psState = psState;
+    }
+
+    public PsType getPsType() {
+        return psType;
+    }
+
+    public void setPsType(PsType psType) {
+        this.psType = psType;
     }
 
     public AdPermissions() {
@@ -72,5 +100,13 @@ public class AdPermissions {
 
     public void setRdescribe(String rdescribe) {
         this.rdescribe = rdescribe;
+    }
+
+    public Integer getPtype() {
+        return ptype;
+    }
+
+    public void setPtype(Integer ptype) {
+        this.ptype = ptype;
     }
 }

@@ -21,7 +21,7 @@
       <arg column="floorprice" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="starttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="pname" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="pimage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pimage" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="pstate" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
@@ -54,7 +54,7 @@
       #{ptexture,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}, #{punit,jdbcType=VARCHAR}, 
       #{pkg,jdbcType=DECIMAL}, #{marketprice,jdbcType=DECIMAL}, #{costprice,jdbcType=DECIMAL}, 
       #{floorprice,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, #{pname,jdbcType=VARCHAR}, 
-      #{pimage,jdbcType=INTEGER}, #{pstate,jdbcType=INTEGER})
+      #{pimage,jdbcType=VARCHAR}, #{pstate,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.pd.model.PdProduce" >
     insert into pd_produce
@@ -176,7 +176,7 @@
         #{pname,jdbcType=VARCHAR},
       </if>
       <if test="pimage != null" >
-        #{pimage,jdbcType=INTEGER},
+        #{pimage,jdbcType=VARCHAR},
       </if>
       <if test="pstate != null" >
         #{pstate,jdbcType=INTEGER},
@@ -238,7 +238,7 @@
         pname = #{pname,jdbcType=VARCHAR},
       </if>
       <if test="pimage != null" >
-        pimage = #{pimage,jdbcType=INTEGER},
+        pimage = #{pimage,jdbcType=VARCHAR},
       </if>
       <if test="pstate != null" >
         pstate = #{pstate,jdbcType=INTEGER},
@@ -265,7 +265,7 @@
       floorprice = #{floorprice,jdbcType=DECIMAL},
       starttime = #{starttime,jdbcType=TIMESTAMP},
       pname = #{pname,jdbcType=VARCHAR},
-      pimage = #{pimage,jdbcType=INTEGER},
+      pimage = #{pimage,jdbcType=VARCHAR},
       pstate = #{pstate,jdbcType=INTEGER}
     where prid = #{prid,jdbcType=INTEGER}
   </update>

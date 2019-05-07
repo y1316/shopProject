@@ -1,5 +1,10 @@
 package com.shop.ssm.sys.ad.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+@Component
+@ToString
 public class PsState {
     private Integer sid;
 

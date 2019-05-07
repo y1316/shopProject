@@ -1,12 +1,10 @@
-package com.shop.ssm.sys.ad.mapper;
+package com.shop.ssm.sys.ad.service;
 
 import com.shop.ssm.sys.ad.model.AdRole;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface AdRoleMapper {
+public interface IAdRoleService {
     int deleteByPrimaryKey(Integer rid);
 
     int insert(AdRole record);
