@@ -27,16 +27,17 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 品牌管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="text-c">
-		<form class="Huiform" method="post" action="${ctx}/product-brand/addPdBrand" target="_self" modelAttribute="pb">
-			<input type="text" placeholder="品牌名称" value="" class="input-text" style="width:120px">
+		<f:form class="Huiform" method="post" action="${ctx}/pd/pdBc/addPdBrand" target="_self" modelAttribute="pdBrand">
+			<f:input type="text" placeholder="品牌名称" value="" class="input-text" style="width:120px" path="bname"></f:input>
 			<span class="btn-upload form-group">
-			<input class="input-text upload-url" type="text" name="uploadfile-2" id="uploadfile-2" readonly style="width:200px">
-			<i class="Hui-iconfont">&#xe642;</i> 上传logo</a>
+			<f:input class="input-text upload-url" type="text" name="uploadfile-2" id="uploadfile-2" readonly="readonly" style="width:150px" path="blogo"></f:input>
+			<a  class="btn btn-primary upload-btn"><i class="Hui-iconfont">&#xe642;</i> 上传logo</a>
 			<input type="file" multiple name="file-2" class="input-file">
-			</span> <span class="select-box" style="width:150px">
-			<input type="text" placeholder="具体描述" value="" class="input-text" style="width:200px">
-			</span><button type="button" class="btn btn-success" id="" name="" onClick="picture_colume_add(this);"><i class="Hui-iconfont">&#xe600;</i> 添加</button>
-		</form>
+			</span>
+			<span class="select-box" style="width:200px;padding: 0px;border: 0px">
+			<f:input type="text" placeholder="具体描述" value="" class="input-text" style="width:200px" path="bdescribe"></f:input>
+			</span><button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe600;</i> 添加</button>
+		</f:form>
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
 	<div class="mt-20">
@@ -57,9 +58,12 @@
 					<td><input name="" type="checkbox" value=""></td>
 					<td>${v.bid}</td>
 					<td><img src="${v.blogo}"></td>
-					<td class="text-l"><img title="国内品牌" src="static/h-ui.admin/images/cn.gif">${v.bname}</td>
+					<td class="text-l"><img title="国内品牌" src="${ctx}/static/h-ui.admin/images/cn.gif">${v.bname}</td>
 					<td class="text-l">${v.bdescribe}</td>
-					<td class="f-14 product-brand-manage"><a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+					<td class="f-14 product-brand-manage">
+						<a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','product-brand-edit.jsp','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+						<a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -77,12 +81,17 @@
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
+
+	function product_brand_edit(title, url, id, w, h) {
+		layer_show(title, url, w, h);
+	}
+
 	$('.table-sort').dataTable({
 		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 		"bStateSave": true,//状态保存
 		"aoColumnDefs": [
 			//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-			{"orderable":false,"aTargets":[0,6]}// 制定列不参与排序
+			{"orderable":false,"aTargets":[0,5]}// 制定列不参与排序
 		]
 	});
 </script>

@@ -3,7 +3,6 @@ package com.shop.ssm.sys.ad.controller;
 import com.shop.ssm.base.utils.PageBean;
 import com.shop.ssm.sys.ad.model.AdPermissions;
 import com.shop.ssm.sys.ad.service.IAdPermissionsService;
-import org.apache.shiro.authc.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

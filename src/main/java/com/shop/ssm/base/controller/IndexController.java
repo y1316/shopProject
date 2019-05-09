@@ -56,20 +56,7 @@ public class IndexController {
         return "or/order-list";
     }
 
-    @RequestMapping("/shop/toProductBrand")
-    public String toProductBrand(){
-        return "pd/product-brand";
-    }
 
-    @RequestMapping("/shop/toProductCategory")
-    public String toProductCategory(){
-        return "pd/product-category";
-    }
-
-    @RequestMapping("/shop/toProductCategoryAdd")
-    public String toProductCategoryAdd(){
-        return "pd/product-category-add";
-    }
 
     @RequestMapping("/shop/toFeedbackList")
     public String toFeedbackList(){

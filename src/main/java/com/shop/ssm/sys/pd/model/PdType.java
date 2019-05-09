@@ -1,5 +1,10 @@
 package com.shop.ssm.sys.pd.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
+@Component
+@ToString
 public class PdType {
     private Integer tid;
 

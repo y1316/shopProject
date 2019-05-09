@@ -8,6 +8,13 @@
       <arg column="tnote" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+
+  <resultMap id="row1" type="com.shop.ssm.sys.pd.model.PdType" >
+      <id column="tid" property="tid" javaType="java.lang.Integer" />
+      <result column="tname" property="tname" javaType="java.lang.String" />
+      <result column="tnote" property="tnote" javaType="java.lang.String" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     tid, tname, tnote
   </sql>
@@ -17,14 +24,22 @@
     from pd_type
     where tid = #{tid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="row1" resultType="com.shop.ssm.sys.pd.model.PdType">
+      select *
+      from pd_type
+      where 1=1
+      <if test="null!=tname and ''!=tname">
+        AND tname LIKE concat("%",#{tname,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from pd_type
     where tid = #{tid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.ssm.sys.pd.model.PdType" >
-    insert into pd_type (tid, tname, tnote
+    insert into pd_type (tname, tnote
       )
-    values (#{tid,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}, #{tnote,jdbcType=VARCHAR}
+    values (#{tname,jdbcType=VARCHAR}, #{tnote,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shop.ssm.sys.pd.model.PdType" >

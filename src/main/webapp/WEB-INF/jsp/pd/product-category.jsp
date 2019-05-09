@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <%@include file="/common/head.jsp"%>
@@ -27,8 +28,11 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 产品分类 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <table class="table">
 	<tr>
-		<td width="200" class="va-t"><ul id="treeDemo" class="ztree"></ul></td>
-		<td class="va-t"><iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=390px SRC="${ctx}/shop/toProductCategoryAdd"></iframe></td>
+
+		<td width="200" class="va-t">
+			<ul id="treeDemo" class="ztree"></ul>
+		</td>
+		<td class="va-t"><iframe ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=390px SRC="${ctx}/pd/pdTp/toProductCategoryAdd"></iframe></td>
 	</tr>
 </table>
 <!--_footer 作为公共模版分离出去-->
@@ -68,17 +72,11 @@
 		}
 	};
 
+
 	var zNodes =[
-		{ id:1, pId:0, name:"一级分类", open:true},
-		{ id:11, pId:1, name:"二级分类"},
-		{ id:111, pId:11, name:"三级分类"},
-		{ id:112, pId:11, name:"三级分类"},
-		{ id:113, pId:11, name:"三级分类"},
-		{ id:114, pId:11, name:"三级分类"},
-		{ id:115, pId:11, name:"三级分类"},
-		{ id:12, pId:1, name:"二级分类 1-2"},
-		{ id:121, pId:12, name:"三级分类 1-2-1"},
-		{ id:122, pId:12, name:"三级分类 1-2-2"},
+		<c:forEach var="v" items="${pdTypeList}">
+		{ id:${v.tid}, pId:0, name:"${v.tname}"},
+		</c:forEach>
 	];
 
 	var code;
