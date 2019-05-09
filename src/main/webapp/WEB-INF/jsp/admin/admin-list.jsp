@@ -31,15 +31,17 @@
                                                href="javascript:location.replace(location.href);" title="刷新"><i
         class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
+    <f:form action="${ctx}/admin/AdminRole/adminOfRole" method="post" modelAttribute="adAdminVo">
     <div class="text-c"> 日期范围：
-        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin"
-               class="input-text Wdate" style="width:120px;">
+        <f:input path="startTime" type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin"
+               class="input-text Wdate" style="width:120px;"></f:input>
         -
-        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax"
-               class="input-text Wdate" style="width:120px;">
-        <input type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="" name="">
+        <f:input path="endTime" type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax"
+               class="input-text Wdate" style="width:120px;"></f:input>
+        <f:input path="aname" type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="" name=""></f:input>
         <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
     </div>
+    </f:form>
     <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a
             href="javascript:;" onclick="admin_add('添加管理员','${ctx}/shop/toAdminAdd','800','500')"

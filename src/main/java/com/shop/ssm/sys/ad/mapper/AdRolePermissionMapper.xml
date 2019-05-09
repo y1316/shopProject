@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.ad.mapper.AdRolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.AdRolePermission" >
+    <constructor >
+      <idArg column="rpid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rpid, rid, pid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from ad_role_permission
+    where rpid = #{rpid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ad_role_permission
+    where rpid = #{rpid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.AdRolePermission" >
+    insert into ad_role_permission (rpid, rid, pid
+      )
+    values (#{rpid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.AdRolePermission" >
+    insert into ad_role_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rpid != null" >
+        rpid,
+      </if>
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rpid != null" >
+        #{rpid,jdbcType=INTEGER},
+      </if>
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertRole" parameterType="com.shop.ssm.sys.ad.model.AdRole">
+
+      insert into ad_role_permission(
+      pid,rid
+      ) values
+    <foreach item="m" collection="perIds" separator=",">
+      (#{m},#{rid})
+    </foreach>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.AdRolePermission" >
+    update ad_role_permission
+    <set >
+      <if test="rid != null" >
+        rid = #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rpid = #{rpid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.AdRolePermission" >
+    update ad_role_permission
+    set rid = #{rid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER}
+    where rpid = #{rpid,jdbcType=INTEGER}
+  </update>
+</mapper>

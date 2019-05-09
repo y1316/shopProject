@@ -15,10 +15,11 @@
   <sql id="Base_Column_List">
     pid, pname, level, paren_pid, pstate, rdescribe, ptype
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from ad_permissions
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="adList">
+    SELECT *
+			FROM ad_permissions p INNER JOIN
+			ps_type t on t.tid = p.ptype
+			LEFT JOIN ps_state s ON p.pstate = s.sid
     where pid = #{pid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -129,6 +130,10 @@
             <id column="sid" javaType="java.lang.Integer" property="sid" />
             <result column="sname" javaType="java.lang.String" property="sname" />
         </association>
+        <collection property="psType" ofType="com.shop.ssm.sys.ad.model.PsType">
+          <id column="tid" property="tid" javaType="java.lang.Integer"/>
+          <result column="tname" property="tname" javaType="java.lang.String"/>
+        </collection>
     </resultMap>
 
     <select id="list" parameterType="com.shop.ssm.sys.ad.model.AdPermissions" resultMap="adList">

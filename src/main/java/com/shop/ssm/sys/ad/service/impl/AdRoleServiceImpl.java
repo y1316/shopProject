@@ -1,7 +1,9 @@
 package com.shop.ssm.sys.ad.service.impl;
 
+import com.shop.ssm.sys.ad.mapper.AdRoleMapper;
 import com.shop.ssm.sys.ad.model.AdRole;
 import com.shop.ssm.sys.ad.service.IAdRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,6 +11,8 @@ import java.util.List;
 @Service
 @Transactional
 public class AdRoleServiceImpl implements IAdRoleService {
+    @Autowired
+    private AdRoleMapper adRoleMapper;
     @Override
     public int deleteByPrimaryKey(Integer rid) {
         return 0;
@@ -21,7 +25,7 @@ public class AdRoleServiceImpl implements IAdRoleService {
 
     @Override
     public int insertSelective(AdRole record) {
-        return 0;
+        return adRoleMapper.insertSelective(record);
     }
 
     @Override

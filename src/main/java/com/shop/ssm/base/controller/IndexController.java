@@ -24,11 +24,6 @@ public class IndexController {
         return "ia/article-list";
     }
 
-    @RequestMapping("/shop/toArticleAdd")
-    public String toArticleAdd(){
-        return "ia/article-add";
-    }
-
     @RequestMapping("/shop/toArticle")
     public String toArticle(){
         return "ia/article-add";
@@ -48,8 +43,10 @@ public class IndexController {
     public String tomember(){
         return "ia/member-add";
     }
-
-
+    @RequestMapping("/shop/toArticleAdd")
+    public String toArticleAdd(){
+        return "ia/article-add";
+    }
 
     @RequestMapping("/shop/toOrderList")
     public String toOrderList(){

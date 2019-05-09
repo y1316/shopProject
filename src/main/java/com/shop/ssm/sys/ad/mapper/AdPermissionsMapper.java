@@ -1,9 +1,10 @@
 package com.shop.ssm.sys.ad.mapper;
 
 import com.shop.ssm.sys.ad.model.AdPermissions;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface AdPermissionsMapper {
     int deleteByPrimaryKey(Integer pid);
 
