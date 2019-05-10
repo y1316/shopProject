@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.util.Locale;
 
 @Controller
@@ -22,11 +23,6 @@ public class IndexController {
     @RequestMapping("/shop/toArticleList")
     public String toArticleList(){
         return "ia/article-list";
-    }
-
-    @RequestMapping("/shop/toArticleAdd")
-    public String toArticleAdd(){
-        return "ia/article-add";
     }
 
     @RequestMapping("/shop/toArticle")
@@ -81,11 +77,6 @@ public class IndexController {
         return "pd/product-list";
     }
 
-    @RequestMapping("/shop/toProductAdd")
-    public String toProductAdd(){
-        return "pd/product-add";
-    }
-
     @RequestMapping("/shop/toMemberList")
     public String toMemberList(){
         return "me/member-list";
@@ -94,16 +85,6 @@ public class IndexController {
     @RequestMapping("/shop/toMemberDel")
     public String toMemberDel(){
         return "me/member-del";
-    }
-
-    @RequestMapping("/shop/toMemberAdd")
-    public String toMemberAdd(){
-        return "me/member-add";
-    }
-
-    @RequestMapping("/shop/toChangePassword")
-    public String toChangePassword(){
-        return "me/change-password";
     }
 
     @RequestMapping("/shop/toMemberLevel")
@@ -135,6 +116,22 @@ public class IndexController {
     public String toMemberRecordDetails(){
         return "me/member-record-details";
     }
+
+    @RequestMapping("/shop/toAdminRole")
+    public String toAdminRole(){
+        return "admin/admin-role";
+    }
+
+    @RequestMapping("/shop/toAdminPermission")
+    public String toAdminPermission(){
+        return "admin/admin-permission";
+    }
+
+    @RequestMapping("/shop/toAdminList")
+    public String toAdminList(){
+        return "admin/admin-list";
+    }
+
 
     @RequestMapping("/shop/toChartsSt")
     public String toChartsSt(){
@@ -178,11 +175,6 @@ public class IndexController {
         return "sys/system-category";
     }
 
-    @RequestMapping("/shop/toSystemCategoryAdd")
-    public String toSystemCategoryAdd(){
-        return "sys/system-category-add";
-    }
-
     @RequestMapping("/shop/toSystemData")
     public String toSystemData(){
         return "sys/system-data";
@@ -209,4 +201,6 @@ public class IndexController {
         }
         return "index";
     }
+       
+
 }
