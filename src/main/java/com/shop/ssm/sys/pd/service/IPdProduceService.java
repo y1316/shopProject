@@ -13,7 +13,7 @@ public interface IPdProduceService {
 
     int insertSelective(PdProduce record);
 
-    PdProduce selectByPrimaryKey(PdProduce pdProduce);
+    PdProduce selectByPrimaryKey(Integer prid);
 
     int updateByPrimaryKeySelective(PdProduce record);
 

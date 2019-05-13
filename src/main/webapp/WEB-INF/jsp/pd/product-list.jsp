@@ -91,7 +91,7 @@
                                title="发布"><i class="Hui-iconfont">&#xe603;</i></a>
                             </c:if>
                             <a style="text-decoration:none" class="ml-5"
-                               onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i
+                               onClick="product_edit('产品编辑','${ctx}/pd/pdTp/listPdType?path=edit&prid=${v.prid}','')" href="javascript:;" title="编辑"><i
                                     class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5"
                                                                              onClick="product_del(this,'${v.prid}')"
                                                                              href="javascript:;" title="删除"><i

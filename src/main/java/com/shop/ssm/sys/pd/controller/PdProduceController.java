@@ -33,14 +33,14 @@ public class PdProduceController {
         return "/pd/product-add";
     }
 
-    @RequestMapping("/toAddPdProduce")
-    public String toAddPdProduce(){
-        return "/addPdProduce";
-    }
-
     @RequestMapping("/toListPdProduce")
     public String toList(){
         return "pd/product-list";
+    }
+
+    @RequestMapping("/toProductUpdate")
+    public String toProductUpdate(){
+        return "pd/product-edit";
     }
 
 
@@ -77,11 +77,19 @@ public class PdProduceController {
     }
 
     @RequestMapping("/updatePdProduce")
-    public @ResponseBody void updatePdProduce(PdProduce pdProduce,Model model,HttpServletRequest req){
-        System.err.println("update");
-        pdProduce.setPrid(new Integer(req.getParameter("prid")));
-        pdProduce.setPstate(new Integer(req.getParameter("pstate")));
+    public String updatePdProduce(PdProduce pdProduce,Model model){
+        pdProduce.setPimage(pdProduce.getPimage().replace("C:\\fakepath\\","image/"));
         pdProduceService.updateByPrimaryKeySelective(pdProduce);
-//        return "<script>window.parent.location.href='listPdProduce';</script>";
+        return "redirect:/pd/pdPd/listPdProduce";
+    }
+
+
+    @RequestMapping("/selectPdProduce")
+    public ModelAndView selectPdProduce(Integer id,ModelAndView modelAndView,HttpServletRequest req){
+        String prid = req.getParameter("prid");
+        PdProduce produce = pdProduceService.selectByPrimaryKey(new Integer(prid));
+        modelAndView.addObject("produce",produce);
+        modelAndView.setViewName("pd/product-edit");
+        return modelAndView;
     }
 }

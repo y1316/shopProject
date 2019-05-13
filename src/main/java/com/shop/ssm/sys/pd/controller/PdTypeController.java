@@ -72,6 +72,9 @@ public class PdTypeController {
         if(pa.equals("list")){
             modelAndView.setViewName("forward:/pd/pdTp/toProductCategory");
         }
+        if(pa.equals("edit")){
+            modelAndView.setViewName("forward:/pd/pdPd/selectPdProduce?prid="+ request.getParameter("prid"));
+        }
         return modelAndView;
     }
 

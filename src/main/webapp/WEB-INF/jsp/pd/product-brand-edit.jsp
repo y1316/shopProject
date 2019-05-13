@@ -37,13 +37,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>品牌名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input type="text" class="input-text" value="${bnamw}" placeholder="" id="username" name="username" path="bname" ></f:input>
+				<f:input type="text" class="input-text" value="${brand.bname}" placeholder="" id="username" name="username" path="bname" ></f:input>
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">LOGO：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
-				<f:input class="input-text upload-url" value="${blogo}" type="text" name="uploadfile" id="uploadfile" readonly="true"  nullmsg="请添加附件！" style="width:200px" path="blogo"></f:input>
+				<f:input class="input-text upload-url" value="${brand.blogo}" type="text" name="uploadfile" id="uploadfile" readonly="true"  nullmsg="请添加附件！" style="width:200px" path="blogo"></f:input>
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 修改LOGO</a>
 				<input type="file" multiple name="file-2" class="input-file">
 				</span> </div>
@@ -51,7 +51,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">具体描述：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:textarea name="beizhu" cols="" rows="" class="textarea"  placeholder="${bdescribe}" onKeyUp="$.Huitextarealength(this,100)" path="bdescribe" ></f:textarea>
+				<f:textarea name="beizhu" cols="" rows="" class="textarea"  placeholder="${brand.bdescribe}" onKeyUp="$.Huitextarealength(this,100)" path="bdescribe" ></f:textarea>
 				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
 			</div>
 		</div>

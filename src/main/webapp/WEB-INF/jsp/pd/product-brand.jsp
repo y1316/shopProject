@@ -110,6 +110,11 @@
 			{"orderable":false,"aTargets":[0,5]}// 制定列不参与排序
 		]
 	});
+
+	/*用户-编辑*/
+	function product_brand_edit(title, url, id, w, h) {
+		layer_show(title, url, w, h);
+	}
 </script>
 </body>
 </html>

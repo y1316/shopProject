@@ -82,6 +82,7 @@ public class PdBrandController {
     public String updatePdBrand(PdBrand pdBrand, Model model){
         boolean pdb = model.containsAttribute("pb");
         System.out.println(pdb);
+        pdBrand.setBlogo(pdBrand.getBlogo().replace("C:\\fakepath\\","image/"));
         pdBrandService.updateByPrimaryKeySelective(pdBrand);
         return "redirect:/pd/pdBc/listPdBrand";
     }

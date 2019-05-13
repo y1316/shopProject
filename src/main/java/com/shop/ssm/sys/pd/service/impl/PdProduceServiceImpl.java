@@ -39,8 +39,8 @@ public class PdProduceServiceImpl implements IPdProduceService {
 
     @Override
     @Transactional(readOnly = true)
-    public PdProduce selectByPrimaryKey(PdProduce pdProduce) {
-        return pdProduceMapper.selectByPrimaryKey(pdProduce.getPrid());
+    public PdProduce selectByPrimaryKey(Integer prid) {
+        return pdProduceMapper.selectByPrimaryKey(prid);
     }
 
     @Override
