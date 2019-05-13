@@ -45,9 +45,13 @@ public class PdProduceController {
 
 
     @RequestMapping("/addPdProduce")
-    public String add(PdProduce pdProduce,Model model){
+    public @ResponseBody void add(PdProduce pdProduce,ModelAndView modelAndView,HttpServletResponse response)throws Exception{
+        pdProduce.setPimage(pdProduce.getPimage().replace("C:\\fakepath\\","image/"));
         pdProduceService.insert(pdProduce);
-        return "addPdProduce";
+        PrintWriter out = response.getWriter();
+        out.println("<script>window.parent.location.href='listPdProduce';</script>");
+        out.flush();
+        out.close();
     }
 
     @RequestMapping("/deletePdProduce")

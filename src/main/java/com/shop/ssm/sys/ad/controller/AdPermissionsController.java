@@ -2,6 +2,7 @@ package com.shop.ssm.sys.ad.controller;
 
 import com.shop.ssm.base.utils.PageBean;
 import com.shop.ssm.sys.ad.model.AdPermissions;
+import com.shop.ssm.sys.ad.model.PsType;
 import com.shop.ssm.sys.ad.service.IAdPermissionsService;
 import com.shop.ssm.sys.ad.service.IPsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -48,22 +48,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="tid" class="select">
+				<select name="ptype" class="select">
 					<c:forEach var="v" items="${pdTypeList}">
 					<option value="${v.tid}">${v.tname}</option>
 					</c:forEach>
 				</select>
 				<%--<f:select class="select" path="" items="${pdTypeList}" itemLabel="tname" itemValue="tid"></f:select>--%>
 				</span> </div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">允许评论：</label>
-			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
-				<div class="check-box">
-					<input type="checkbox" id="checkbox-1">
-					<label for="checkbox-1">&nbsp;</label>
-				</div>
-			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">产品规格：</label>
@@ -131,12 +122,6 @@
 				元</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">销售开始时间：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<f:input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:180px;" path="starttime"></f:input>
-			</div>
-		</div>
-		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">产品摘要：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<f:textarea path="pname" name="" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,200)"></f:textarea>
@@ -144,39 +129,46 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">图片上传：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<div class="uploader-list-container">
-					<div class="queueList">
-						<div id="dndArea" class="placeholder">
-							<div id="filePicker-2"></div>
-						</div>
-					</div>
-					<div class="statusBar" style="display:none;">
-						<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
-						<div class="info"></div>
-						<div class="btns">
-							<div id="filePicker2"></div>
-							<div class="uploadBtn" >开始上传</div>
-						</div>
-					</div>
-				</div>
+			<label class="form-label col-xs-4 col-sm-2">LOGO：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
+				<f:input class="input-text upload-url" value="" type="text" name="uploadfile" id="uploadfile" readonly="true"  nullmsg="请添加附件！" style="width:200px" path="pimage"></f:input>
+				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 产品图片</a>
+				<input type="file" multiple name="blogo" class="input-file">
+				</span>
 			</div>
 		</div>
+		<%--</div>--%>
+		<%--<div class="row cl">--%>
+			<%--<label class="form-label col-xs-4 col-sm-2">图片上传：</label>--%>
+			<%--<div class="formControls col-xs-8 col-sm-9">--%>
+				<%--<div class="uploader-list-container">--%>
+					<%--<div class="queueList">--%>
+						<%--<div id="dndArea" class="placeholder">--%>
+							<%--<div id="filePicker-2"></div>--%>
+						<%--</div>--%>
+					<%--</div>--%>
+					<%--<div class="statusBar" style="display:none;">--%>
+						<%--<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>--%>
+						<%--<div class="info"></div>--%>
+						<%--<div class="btns">--%>
+							<%--<div id="filePicker2"></div>--%>
+							<%--<div class="uploadBtn" >开始上传</div>--%>
+						<%--</div>--%>
+					<%--</div>--%>
+				<%--</div>--%>
+			<%--</div>--%>
+		<%--</div>--%>
 		<div class="row cl">
-			<f:label class="form-label col-xs-4 col-sm-2" path="pname">详细内容：</f:label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script>
-				</div>
 				</div>
 				<div class="row cl">
-						<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-						<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+					<input type="hidden" value="1" name="pstate">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 				</div>
 				</div>
-				</form>
+				</f:form>
 				</div>
 
 				<!--_footer 作为公共模版分离出去-->

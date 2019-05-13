@@ -47,8 +47,11 @@ public class PdBrandController {
     @RequestMapping("/addPdBrand")
 //    @ResponseBody
     public String addtPdBrand(PdBrand pdBrand,Model model){
-        boolean p = model.containsAttribute("pb");
-        System.out.println(p);
+//        boolean p = model.containsAttribute("pb");
+//        System.out.println(p);
+        pdBrand.setBlogo(pdBrand.getBlogo().replace("C:\\fakepath\\","image/"));
+        System.err.println(pdBrand.getBlogo());
+//        pdBrand.getBlogo().substring()
         pdBrandService.insert(pdBrand);
         return "redirect:/pd/pdBc/listPdBrand";
     }
