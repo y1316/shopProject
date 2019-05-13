@@ -45,14 +45,22 @@
     <select id="adminOfRole" resultMap="resultAdmin" parameterType="com.shop.ssm.sys.ad.model.AdAdmin">
         SELECT
         a.*,
-        r.*
+        r.*,s.sname
         FROM
         ad_admin a
+        LEFT JOIN ad_state s ON a.astate = s.sid
         LEFT JOIN ad_admin_role ar ON a.aid = ar.uid
         LEFT JOIN ad_role r ON ar.rid = r.rid
         where 1=1
         <if test="null != aname and ''!=aname">
             AND aname LIKE CONCAT("%",#{aname,jdbcType=VARCHAR},"%")
+        </if>
+        <if test="null != startTime and '' != startTime">
+            AND a.atime &gt; #{startTime,jdbcType=VARCHAR}
+            -- AND a.atime BETWEEN #{startTime,jdbcType=VARCHAR} AND '2019-05-07 11:00:00'
+        </if>
+        <if test="null != endTime and '' != endTime">
+            AND a.atime &lt; #{endTime,jdbcType=VARCHAR}
         </if>
     </select>
     <select id="roleOfAdmin" resultMap="resultRole" parameterType="com.shop.ssm.sys.ad.model.AdRole">

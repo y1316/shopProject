@@ -1,98 +1,106 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shop.ssm.sys.ad.mapper.AdRoleMapper" >
-  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.AdRole" >
-    <constructor >
-      <idArg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="rname" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="astate" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="rdescribe" jdbcType="VARCHAR" javaType="java.lang.String" />
-    </constructor>
-  </resultMap>
-  <resultMap id="adList" type="com.shop.ssm.sys.ad.model.AdRole">
-    <id column="rid" property="rid" javaType="java.lang.Integer"/>
-    <result column="rname" property="rname" javaType="java.lang.String"/>
-    <result column="astate" property="astate" javaType="java.lang.Integer"/>
-    <result column="rdescribe" property="rdescribe" javaType="java.lang.String"/>
-    <association property="rlState" javaType="com.shop.ssm.sys.ad.model.RlState">
-      <id column="sid" property="sid" javaType="java.lang.Integer"/>
-      <result column="sname" property="sname" javaType="java.lang.String"/>
-    </association>
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.shop.ssm.sys.ad.mapper.AdRoleMapper">
+    <resultMap id="BaseResultMap" type="com.shop.ssm.sys.ad.model.AdRole">
+        <constructor>
+            <idArg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="rname" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="astate" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="rdescribe" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="adList" type="com.shop.ssm.sys.ad.model.AdRole">
+        <id column="rid" property="rid" javaType="java.lang.Integer"/>
+        <result column="rname" property="rname" javaType="java.lang.String"/>
+        <result column="astate" property="astate" javaType="java.lang.Integer"/>
+        <result column="rdescribe" property="rdescribe" javaType="java.lang.String"/>
+        <association property="rlState" javaType="com.shop.ssm.sys.ad.model.RlState">
+            <id column="sid" property="sid" javaType="java.lang.Integer"/>
+            <result column="sname" property="sname" javaType="java.lang.String"/>
+        </association>
+        <collection property="adPermissions" ofType="com.shop.ssm.sys.ad.model.AdPermissions">
+            <id column="pid" javaType="java.lang.Integer" property="pid"/>
+            <result column="pname" javaType="java.lang.String" property="pname"/>
+            <result column="level" javaType="java.lang.String" property="level"/>
+            <result column="paren_pid" javaType="java.lang.Integer" property="parenPid"/>
+            <result column="pstate" javaType="java.lang.Integer" property="pstate"/>
+            <result column="rdescribe" javaType="java.lang.String" property="rdescribe"/>
+        </collection>
+    </resultMap>
+    <sql id="Base_Column_List">
     rid, rname, astate, rdescribe
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from ad_role
-    where rid = #{rid,jdbcType=INTEGER}
-  </select>
-    <select id="list" resultMap="adList" parameterType="com.shop.ssm.sys.ad.model.AdRole">
-      select *
-      from ad_role
-      where 1=1
-      <if test="null != pname and ''!=pname">
-        AND rname LIKE CONCAT("%",#{rname,jdbcType=VARCHAR},"%")
-      </if>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from ad_role
+        where rid = #{rid,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="adList" parameterType="com.shop.ssm.sys.ad.model.AdRole">
+        select *
+        from ad_role
+        where 1=1
+        <if test="null != pname and ''!=pname">
+            AND rname LIKE CONCAT("%",#{rname,jdbcType=VARCHAR},"%")
+        </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from ad_role
     where rid = #{rid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
+    <insert id="insert" parameterType="com.shop.ssm.sys.ad.model.AdRole">
     insert into ad_role (rid, rname, astate, 
       rdescribe)
     values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{astate,jdbcType=INTEGER}, 
       #{rdescribe,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
-    insert into ad_role
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rid != null" >
-        rid,
-      </if>
-      <if test="rname != null" >
-        rname,
-      </if>
-      <if test="astate != null" >
-        astate,
-      </if>
-      <if test="rdescribe != null" >
-        rdescribe,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rid != null" >
-        #{rid,jdbcType=INTEGER},
-      </if>
-      <if test="rname != null" >
-        #{rname,jdbcType=VARCHAR},
-      </if>
-      <if test="astate != null" >
-        #{astate,jdbcType=INTEGER},
-      </if>
-      <if test="rdescribe != null" >
-        #{rdescribe,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
-    update ad_role
-    <set >
-      <if test="rname != null" >
-        rname = #{rname,jdbcType=VARCHAR},
-      </if>
-      <if test="astate != null" >
-        astate = #{astate,jdbcType=INTEGER},
-      </if>
-      <if test="rdescribe != null" >
-        rdescribe = #{rdescribe,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where rid = #{rid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.AdRole" >
+    <insert id="insertSelective" parameterType="com.shop.ssm.sys.ad.model.AdRole" useGeneratedKeys="true" keyProperty="rid">
+        insert into ad_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rid != null">
+                rid,
+            </if>
+            <if test="rname != null">
+                rname,
+            </if>
+            <if test="astate != null">
+                astate,
+            </if>
+            <if test="rdescribe != null">
+                rdescribe,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rid != null">
+                #{rid,jdbcType=INTEGER},
+            </if>
+            <if test="rname != null">
+                #{rname,jdbcType=VARCHAR},
+            </if>
+            <if test="astate != null">
+                #{astate,jdbcType=INTEGER},
+            </if>
+            <if test="rdescribe != null">
+                #{rdescribe,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.ad.model.AdRole">
+        update ad_role
+        <set>
+            <if test="rname != null">
+                rname = #{rname,jdbcType=VARCHAR},
+            </if>
+            <if test="astate != null">
+                astate = #{astate,jdbcType=INTEGER},
+            </if>
+            <if test="rdescribe != null">
+                rdescribe = #{rdescribe,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where rid = #{rid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.ad.model.AdRole">
     update ad_role
     set rname = #{rname,jdbcType=VARCHAR},
       astate = #{astate,jdbcType=INTEGER},

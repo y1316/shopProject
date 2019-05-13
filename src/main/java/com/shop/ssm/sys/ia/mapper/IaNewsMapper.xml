@@ -31,6 +31,17 @@
       <result column="nviewed" property="nviewed" javaType="java.lang.Integer" />
       <result column="nstate" property="nstate" javaType="java.lang.Integer" />
       <result column="content" property="content" javaType="java.lang.String" />
+     <association property="iaSate" javaType="com.shop.ssm.sys.ia.model.IaState">
+      <id column="sid" property="sid"/>
+      <result column="sname" property="sname"/>
+    </association>
+
+    <association property="iaType" javaType="com.shop.ssm.sys.ia.model.IaType">
+      <id column="tid" property="tid"/>
+      <result column="tname" property="tname"/>
+      <result column="tnote" property="tnote"/>
+    </association>
+
   </resultMap>
   <sql id="Base_Column_List" >
     nid, ntitle, nbrieftitle, ntype, nabstract, nwriter, nsource, updateTime, nlimit, 

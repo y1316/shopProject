@@ -52,6 +52,12 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <f:select path="ptype" items="${psTypeList}" itemLabel="tname" itemValue="tid"></f:select>
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">父级：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <f:input type="text" class="input-text" value="" placeholder="" id="roleName" name="roleName" path="parenPid"></f:input>

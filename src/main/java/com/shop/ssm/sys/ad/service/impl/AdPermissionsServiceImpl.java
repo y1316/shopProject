@@ -33,12 +33,12 @@ public class AdPermissionsServiceImpl implements IAdPermissionsService {
 
     @Override
     public AdPermissions selectByPrimaryKey(Integer pid) {
-        return null;
+        return adPermissionsMapper.selectByPrimaryKey(pid);
     }
 
     @Override
     public int updateByPrimaryKeySelective(AdPermissions record) {
-        return 0;
+        return adPermissionsMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override

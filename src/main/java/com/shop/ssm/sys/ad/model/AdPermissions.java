@@ -3,9 +3,11 @@ package com.shop.ssm.sys.ad.model;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
 @ToString
-public class AdPermissions {
+public class AdPermissions implements Serializable {
     private Integer pid;
 
     private String pname;

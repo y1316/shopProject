@@ -3,19 +3,34 @@ package com.shop.ssm.sys.ia.model;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Component
 @ToString
-public class IaType {
+public class IaType implements Serializable {
     private Integer tid;
 
     private String tname;
 
     private String tnote;
 
+    private List<IaNews>iaNews;
+
+
+
     public IaType(Integer tid, String tname, String tnote) {
         this.tid = tid;
         this.tname = tname;
         this.tnote = tnote;
+    }
+
+    public List<IaNews> getIaNews() {
+        return iaNews;
+    }
+
+    public void setIaNews(List<IaNews> iaNews) {
+        this.iaNews = iaNews;
     }
 
     public IaType() {

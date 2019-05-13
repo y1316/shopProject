@@ -38,7 +38,7 @@
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a
-            href="javascript:;" onclick="admin_permission_add('添加权限节点','${ctx}/admin/AdPer/toAdminPermissionAdd','','310')"
+            href="javascript:;" onclick="admin_permission_add('添加权限节点','${ctx}/admin/AdPer/listPsType?path=per','','310')"
             class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span
             class="r">共有数据：<strong>54</strong> 条</span></div>
     <table class="table table-border table-bordered table-bg">
@@ -50,7 +50,7 @@
             <th width="25"><input type="checkbox" name="" value=""></th>
             <th width="40">ID</th>
             <th width="200">权限名称</th>
-            <th>字段名</th>
+            <th>权限描述</th>
             <th width="100">操作</th>
         </tr>
         </thead>
@@ -62,10 +62,10 @@
             <td>${pl.pname}</td>
             <td>${pl.rdescribe}</td>
             <td><a title="编辑" href="javascript:;"
-                   onclick="admin_permission_edit('角色编辑','admin-permission-add.jsp','1','','310')" class="ml-5"
+                   onclick="admin_permission_edit('角色编辑','${ctx}/admin/AdPer/listPsType?path=perEdit&pid=${pl.pid}','1','','310')" class="ml-5"
                    style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除"
                                                                                             href="javascript:;"
-                                                                                            onclick="admin_permission_del(this,'1')"
+                                                                                            onclick="admin_permission_del(this,'${pl.pid}')"
                                                                                             class="ml-5"
                                                                                             style="text-decoration:none"><i
                     class="Hui-iconfont">&#xe6e2;</i></a></td>
@@ -107,18 +107,20 @@
     /*管理员-权限-删除*/
     function admin_permission_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
-            $.ajax({
-                type: 'POST',
-                url: '',
-                dataType: 'json',
-                success: function (data) {
-                    $(obj).parents("tr").remove();
-                    layer.msg('已删除!', {icon: 1, time: 1000});
-                },
-                error: function (data) {
-                    console.log(data.msg);
-                },
-            });
+            location.href = '${ctx}/admin/AdPer/delPer?pid='+id
+            <%--$.ajax({--%>
+                <%--type: 'POST',--%>
+                <%--url: '${ctx}/admin/AdPer/delPer',--%>
+                <%--data:{"pid":id},--%>
+                <%--dataType: 'json',--%>
+                <%--success: function (data) {--%>
+                    <%--$(obj).parents("tr").remove();--%>
+                    <%--layer.msg('已删除!', {icon: 1, time: 1000});--%>
+                <%--},--%>
+                <%--error: function (data) {--%>
+                    <%--console.log(data.msg);--%>
+                <%--},--%>
+            <%--});--%>
         });
     }
 </script>

@@ -3,11 +3,13 @@ package com.shop.ssm.sys.ia.model;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Component
 @ToString
-public class IaNews {
+public class IaNews implements Serializable{
     private Integer nid;
 
     private String ntitle;
@@ -29,8 +31,11 @@ public class IaNews {
     private Integer nviewed;
 
     private Integer nstate;
-
     private String content;
+
+    private String iaSate;
+
+    private String iaType;
 
     public IaNews(Integer nid, String ntitle, String nbrieftitle, Integer ntype, String nabstract, String nwriter, String nsource, java.sql.Timestamp updatetime, Integer nlimit, Integer nviewed, Integer nstate, String content) {
         this.nid = nid;
@@ -45,6 +50,22 @@ public class IaNews {
         this.nviewed = nviewed;
         this.nstate = nstate;
         this.content = content;
+    }
+
+    public String getIaSate() {
+        return iaSate;
+    }
+
+    public void setIaSate(String iaSate) {
+        this.iaSate = iaSate;
+    }
+
+    public String getIaType() {
+        return iaType;
+    }
+
+    public void setIaType(String iaType) {
+        this.iaType = iaType;
     }
 
     public IaNews() {

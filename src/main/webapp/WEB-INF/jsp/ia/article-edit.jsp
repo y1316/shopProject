@@ -31,19 +31,19 @@
 </head>
 <body>
 <article class="page-container">
-    <f:form action="${ctx}/ia/article/addInews" method="post" modelAttribute="iaNews" cssClass="form form-horizontal">
-
+    <f:form action="${ctx}/ia/article/update" method="post" modelAttribute="iaNews" cssClass="form form-horizontal">
+		<input type="hidden" name="nid" value="${iaNews1.nid}"/>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="ntitle" class="input-text" ></f:input>
+				<input name="ntitle" type="ntitle" value="${iaNews1.ntitle}" class="input-text" />
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">简略标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="nbrieftitle" class="input-text" ></f:input>
+				<input name="nbrieftitle" type="nbrieftitle" value="${iaNews1.nbrieftitle}" class="input-text" />
 			</div>
 		</div>
 
@@ -52,7 +52,7 @@
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 				<f:select path="ntype" class="select">
-						<f:options items="${iaTypelist}" itemLabel="tname" itemValue="tid"></f:options>
+					<f:options items="${iaTypelist}" itemLabel="tname" itemValue="tid"></f:options>
 				</f:select>
 			</span>
 				<div class="formControls col-xs-8 col-sm-9">
@@ -63,14 +63,14 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="nabstract" class="input-text" ></f:input>
+				<input name="nabstract" type="nabstract" value="${iaNews1.nabstract}" class="input-text" />
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">作者：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="nwriter" class="input-text" ></f:input>
+				<input name="nwriter" type="nwriter" value="${iaNews1.nwriter}" class="input-text" />
 			</div>
 		</div>
 
@@ -78,51 +78,50 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">来源：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="nsource" class="input-text" ></f:input>
+				<input type="hidden" name="nsource" value="${iaNews1.nsource}"/>
 			</div>
 		</div>
 
 		<div class="row cl">
-	<%--		<label class="form-label col-xs-4 col-sm-2">评论内容：</label>--%>
+			<label class="form-label col-xs-4 col-sm-2">评论内容：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
-					<f:input path="nlimit" disabled="true" type="hidden"  value="1"></f:input>
+				<div class="check-box">
+					<input type="hidden" name="nlimit" value="${iaNews1.nlimit}"/>
+				</div>
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">浏览次数：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="nviewed" disabled="true" type="type" value="1" class="input-text" ></f:input>
+				<input type="hidden" name="nviewed" value="${iaNews1.nviewed}"/>
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">发布状态：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-					<f:input path="nstate"  disabled="true" type="type" value="2"></f:input>
+					<input type="hidden" name="nstate" value="${iaNews1.nstate}"/>
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="content" class="input-text" ></f:input>
+				<input name="content" type="content" value="${iaNews1.content}" class="input-text" />
 			</div>
 		</div>
 
-
-
-
 		<div class="row cl">
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                    <input type="submit" value="保存并提交审核" class="btn btn-primary radius"/>
-				</f:form>
-				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+                    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <input type="submit" value="保存并提交" class="btn btn-primary radius"/>
                     <button onClick="removeIframe();" class="btn btn-default radius" type="r">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
                 </div>
 		</div>
 
-				</article>
+	</f:form>
+
+</article>
                 <!--_footer 作为公共模版分离出去-->
                 <script type="text/javascript" src="${ctx}/lib/jquery/1.9.1/jquery.min.js"></script>
 				<script type="text/javascript" src="${ctx}/lib/layer/2.4/layer.js"></script>
