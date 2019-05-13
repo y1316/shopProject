@@ -95,8 +95,8 @@
             <dd>
                 <ul>
                     <li><a data-href="${ctx}/pd/pdBc/listPdBrand" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
-                    <li><a data-href="${ctx}/pd/pdTp/listPdType" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-                    <li><a data-href="${ctx}/shop/toProductList" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+                    <li><a data-href="${ctx}/pd/pdTp/listPdType?path=list" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
+                    <li><a data-href="${ctx}/pd/pdPd/listPdProduce" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
                 </ul>
             </dd>
         </dl>

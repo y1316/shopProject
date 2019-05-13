@@ -46,6 +46,10 @@
       <result column="pname" property="pname" javaType="java.lang.String" />
       <result column="pimage" property="pimage" javaType="java.lang.String" />
       <result column="pstate" property="pstate" javaType="java.lang.Integer" />
+      <association property="pdState" javaType="com.shop.ssm.sys.pd.model.PdState">
+          <id column="sid" property="sid" javaType="java.lang.Integer" />
+          <result column="sname" property="sname" javaType="java.lang.String" />
+      </association>
   </resultMap>
   <sql id="Base_Column_List" >
     prid, prname, brieftitle, ptype, nlimit, plength, pwhidth, pheight, paddress, ptexture, 
@@ -53,18 +57,21 @@
     pstate
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from pd_produce
     where prid = #{prid,jdbcType=INTEGER}
   </select>
   <select id="list" resultMap="row1" resultType="com.shop.ssm.sys.pd.model.PdProduce">
-    select *
-    from pd_produce
-    where 1=1
-    <if test="null!=prname and ''!=prname">
-      AND prname LIKE concat("%",#{prname,jdbcType=VARCHAR},"%")
-    </if>
+      select p.*,s.*
+      from pd_produce p inner join pd_state s on p.pstate = s.sid
+      where 1=1
+      <if test="prid!=0 and prid!=null">
+        AND prid = #{prid,jdbcType=INTEGER}
+      </if>
+      <if test="null!=prname and ''!=prname">
+        AND prname LIKE concat("%",#{prname,jdbcType=VARCHAR},"%")
+      </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from pd_produce

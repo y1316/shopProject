@@ -48,6 +48,8 @@ public class PdProduce {
 
     private Integer pstate;
 
+    private PdState pdState;
+
     public PdProduce(Integer prid, String prname, String brieftitle, Integer ptype, Integer nlimit, BigDecimal plength, BigDecimal pwhidth, BigDecimal pheight, String paddress, String ptexture, String supplier, String punit, BigDecimal pkg, BigDecimal marketprice, BigDecimal costprice, BigDecimal floorprice, Date starttime, String pname, String pimage, Integer pstate) {
         this.prid = prid;
         this.prname = prname;
@@ -233,5 +235,13 @@ public class PdProduce {
 
     public void setPstate(Integer pstate) {
         this.pstate = pstate;
+    }
+
+    public PdState getPdState() {
+        return pdState;
+    }
+
+    public void setPdState(PdState pdState) {
+        this.pdState = pdState;
     }
 }

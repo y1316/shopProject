@@ -22,30 +22,29 @@
     <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
+    <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
     <title>建材列表</title>
     <link rel="stylesheet" href="lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
 </head>
 <body class="pos-r">
-<div class="pos-a"
-     style="width:200px;left:0;top:0; bottom:0; height:100%; border-right:1px solid #e5e5e5; background-color:#f5f5f5; overflow:auto;">
-    <ul id="treeDemo" class="ztree"></ul>
-</div>
-<div style="margin-left:200px;">
+<div>
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span
             class="c-gray en">&gt;</span> 产品列表 <a class="btn btn-success radius r"
                                                   style="line-height:1.6em;margin-top:3px"
                                                   href="javascript:location.replace(location.href);" title="刷新"><i
             class="Hui-iconfont">&#xe68f;</i></a></nav>
     <div class="page-container">
-        <div class="text-c">
-            <input type="text" name="" id="" placeholder=" 产品名称" style="width:250px" class="input-text">
-            <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品
-            </button>
-        </div>
+        <f:form method="post" action="${ctx}/pd/pdPd/listPdProduce" modelAttribute="pdProduce">
+            <div class="text-c">
+                <input type="text" name="prname" id="" placeholder=" 产品名称" style="width:250px" class="input-text">
+                <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品
+                </button>
+            </div>
+        </f:form>
         <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                    class="btn btn-danger radius"><i
                 class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius"
-                                                              onclick="product_add('添加产品','${ctx}/shop/toProductAdd')"
+                                                              onclick="product_add('添加产品','${ctx}/pd/pdTp/listPdType?path=add')"
                                                               href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加产品</a></span>
             <span class="r">共有数据：<strong>54</strong> 条</span></div>
         <div class="mt-20">
@@ -63,29 +62,43 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="text-c va-m">
-                    <td><input name="" type="checkbox" value=""></td>
-                    <td>001</td>
-                    <td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img
-                            width="60" class="product-thumb" src="temp/product/Thumb/6204.jpg"></a></td>
-                    <td class="text-l"><a style="text-decoration:none"
-                                          onClick="product_show('哥本哈根橡木地板','product-show.html','10001')"
-                                          href="javascript:;"><img title="国内品牌" src="static/h-ui.admin/images/cn.gif">
-                        <b class="text-success">圣象</b> 哥本哈根橡木地板KS8373</a></td>
-                    <td class="text-l">
-                        原木的外在,实木条形结构,色泽花纹自然,写意;款式设计吸取实木地板的天然去雕饰之美,在视觉上给人带来深邃联想.多款产品适合搭配不同的风格的室内装饰;功能流露出尊贵典雅的大气韵味。
-                    </td>
-                    <td><span class="price">356.0</span> 元/平米</td>
-                    <td class="td-status"><span class="label label-success radius">已发布</span></td>
-                    <td class="td-manage"><a style="text-decoration:none" onClick="product_stop(this,'10001')"
-                                             href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a
-                            style="text-decoration:none" class="ml-5"
-                            onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i
-                            class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5"
-                                                                     onClick="product_del(this,'10001')"
-                                                                     href="javascript:;" title="删除"><i
-                            class="Hui-iconfont">&#xe6e2;</i></a></td>
-                </tr>
+                <c:forEach var="v" items="${pdProduceList}">
+                    <tr class="text-c va-m">
+                        <td><input name="" type="checkbox" value=""></td>
+                        <td>${v.prid}</td>
+                        <td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img
+                                width="60" class="product-thumb" src="${ctx}/${v.pimage}"></a></td>
+                        <td class="text-l"><a style="text-decoration:none"
+                                              onClick="product_show('哥本哈根橡木地板','product-show.html','10001')"
+                                              href="javascript:;"><img title="国内品牌"
+                                                                       src="static/h-ui.admin/images/cn.gif">
+                            <b class="text-success">${v.prname}</b> </a></td>
+                        <td class="text-l">
+                                ${v.pname}
+                        </td>
+                        <td><span class="price">${v.marketprice}</span> 元/${v.punit}</td>
+                        <c:if test="${v.pdState.sname eq '已发布'}">
+                        <td class="td-status"><span class="label label-success radius">${v.pdState.sname}</span></td>
+                        <td class="td-manage">
+                            <a style="text-decoration:none" onClick="product_stop(this,${v.prid},3)" href="javascript:;"
+                               title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>
+                            </c:if>
+                            <c:if test="${v.pdState.sname eq '已下架'}">
+                        <td class="td-status"><span class="label label-defaunt radius">${v.pdState.sname}</span></td>
+                        <td class="td-manage">
+                            <a style="text-decoration:none" onClick="product_start(this,${v.prid},1)"
+                               href="javascript:;"
+                               title="发布"><i class="Hui-iconfont">&#xe603;</i></a>
+                            </c:if>
+                            <a style="text-decoration:none" class="ml-5"
+                               onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i
+                                    class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5"
+                                                                             onClick="product_del(this,'${v.prid}')"
+                                                                             href="javascript:;" title="删除"><i
+                                class="Hui-iconfont">&#xe6e2;</i></a>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -93,7 +106,6 @@
 </div>
 
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
@@ -204,22 +216,50 @@
     }
 
     /*产品-下架*/
-    function product_stop(obj, id) {
+    function product_stop(obj, id, pstate) {
         layer.confirm('确认要下架吗？', function (index) {
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
-            $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
-            $(obj).remove();
-            layer.msg('已下架!', {icon: 5, time: 1000});
+            $.ajax({
+                type: 'POST',
+                url: '${ctx}/pd/pdPd/updatePdProduce.action',
+                data: {
+                    "prid": id
+                    , "pstate": pstate
+                },
+                dataType: '',
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
+                    $(obj).remove();
+                    layer.msg('已下架!', {icon: 5, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                }
+            });
         });
     }
 
     /*产品-发布*/
-    function product_start(obj, id) {
+    function product_start(obj, id, pstate) {
         layer.confirm('确认要发布吗？', function (index) {
-            $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
-            $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
-            $(obj).remove();
-            layer.msg('已发布!', {icon: 6, time: 1000});
+            $.ajax({
+                type: 'POST',
+                url: '${ctx}/pd/pdPd/updatePdProduce.action',
+                data: {
+                    "prid": id
+                    , "pstate": pstate
+                },
+                dataType: '',
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+                    $(obj).remove();
+                    layer.msg('已发布!', {icon: 6, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                }
+            });
         });
     }
 
@@ -245,8 +285,9 @@
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
                 type: 'POST',
-                url: '',
-                dataType: 'json',
+                url: '${ctx}/pd/pdPd/deletePdProduce.action',
+                data: {"prid": id},
+                dataType: '',
                 success: function (data) {
                     $(obj).parents("tr").remove();
                     layer.msg('已删除!', {icon: 1, time: 1000});
