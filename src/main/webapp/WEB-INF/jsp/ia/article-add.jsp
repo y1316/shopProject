@@ -51,8 +51,7 @@
 			<label class="form-label col-xs-4 col-sm-2">分类栏目：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-				<f:select path="ntype" class="select">
-						<f:options items="${iaTypelist}" itemLabel="tname" itemValue="tid"></f:options>
+				<f:select path="ntype" class="select" items="${iaTypelist}" itemLabel="tname" itemValue="tid">
 				</f:select>
 			</span>
 				<div class="formControls col-xs-8 col-sm-9">
@@ -83,23 +82,34 @@
 		</div>
 
 		<div class="row cl">
-	<%--		<label class="form-label col-xs-4 col-sm-2">评论内容：</label>--%>
-			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
-					<f:input path="nlimit" disabled="true" type="hidden"  value="1"></f:input>
+			<label class="form-label col-xs-4 col-sm-2">是否允许评论：</label>
+				<%--<div class="check-box">
+					<c:if test="nlimit==1" >
+						<f:checkbox path="nlimit" disabled="true" >
+						</f:checkbox>
+					</c:if>
+					<c:if test="nlimit==0" >
+						<f:checkbox path="nlimit" disabled="false" >
+					</c:if>--%>
+					<div class="formControls col-xs-8 col-sm-9">
+						<f:input path="nlimit" class="input-text" ></f:input>
+					</div>
+				</div>
 			</div>
+
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">浏览次数：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<f:input path="nviewed" disabled="true" type="type" value="1" class="input-text" ></f:input>
+				<f:input path="nviewed"  class="input-text" ></f:input>
 			</div>
 		</div>
 
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">发布状态：</label>
+			<label class="form-label col-xs-4 col-sm-2">发布状态:</label>
 			<div class="formControls col-xs-8 col-sm-9">
-					<f:input path="nstate"  disabled="true" type="type" value="2"></f:input>
+					<f:input path="nstate"  class="input-text"></f:input>
 			</div>
 		</div>
 
@@ -109,9 +119,6 @@
 				<f:input path="content" class="input-text" ></f:input>
 			</div>
 		</div>
-
-
-
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">

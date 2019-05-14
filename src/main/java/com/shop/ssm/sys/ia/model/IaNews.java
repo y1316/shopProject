@@ -31,11 +31,12 @@ public class IaNews implements Serializable{
     private Integer nviewed;
 
     private Integer nstate;
+
     private String content;
 
-    private String iaSate;
+    private IaState iaSate;
 
-    private String iaType;
+    private IaType iaType;
 
     public IaNews(Integer nid, String ntitle, String nbrieftitle, Integer ntype, String nabstract, String nwriter, String nsource, java.sql.Timestamp updatetime, Integer nlimit, Integer nviewed, Integer nstate, String content) {
         this.nid = nid;
@@ -52,19 +53,19 @@ public class IaNews implements Serializable{
         this.content = content;
     }
 
-    public String getIaSate() {
+    public IaState getIaSate() {
         return iaSate;
     }
 
-    public void setIaSate(String iaSate) {
+    public void setIaSate(IaState iaSate) {
         this.iaSate = iaSate;
     }
 
-    public String getIaType() {
+    public IaType getIaType() {
         return iaType;
     }
 
-    public void setIaType(String iaType) {
+    public void setIaType(IaType iaType) {
         this.iaType = iaType;
     }
 

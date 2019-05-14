@@ -11,7 +11,7 @@
   </resultMap>
 
   <resultMap id="iatype" type="com.shop.ssm.sys.ia.model.IaType" >
-      <id column="tid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <id column="tid" property="tid" javaType="java.lang.Integer" />
       <result column="tname" property="tname" javaType="java.lang.String" />
       <result column="tnote" property="tnote" javaType="java.lang.String" />
   </resultMap>

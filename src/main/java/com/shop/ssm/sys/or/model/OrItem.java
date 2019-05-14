@@ -1,8 +1,13 @@
 package com.shop.ssm.sys.or.model;
 
+import lombok.ToString;
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Component
+@ToString
 public class OrItem {
     private Integer iid;
 

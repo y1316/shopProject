@@ -1,31 +1,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="/common/head.jsp" %>
-    <meta charset="utf-8">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="Bookmark" href="${ctx}/WEB-INF/jsp/favicon.ico">
-    <link rel="Shortcut Icon" href="${ctx}/WEB-INF/jsp/favicon.ico"/>
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="lib/html5shiv.js"></script>
-    <script type="text/javascript" src="lib/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui/css/H-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui.admin/css/H-ui.admin.css"/>
-    <link rel="stylesheet" type="text/css" href="${ctx}/lib/Hui-iconfont/1.0.8/iconfont.css"/>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui.admin/skin/default/skin.css" id="skin"/>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui.admin/css/style.css"/>
-    <!--[if IE 6]>
-    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
-    <script>DD_belatedPNG.fix('*');</script>
-    <![endif]-->
-    <title>H-ui.admin v3.1</title>
-    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+	<%@include file="/common/head.jsp" %>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<link rel="Bookmark" href="${ctx}/WEB-INF/jsp/favicon.ico">
+	<link rel="Shortcut Icon" href="${ctx}/WEB-INF/jsp/favicon.ico"/>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="lib/html5shiv.js"></script>
+	<script type="text/javascript" src="lib/respond.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui/css/H-ui.min.css"/>
+	<link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui.admin/css/H-ui.admin.css"/>
+	<link rel="stylesheet" type="text/css" href="${ctx}/lib/Hui-iconfont/1.0.8/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui.admin/skin/default/skin.css" id="skin"/>
+	<link rel="stylesheet" type="text/css" href="${ctx}/static/h-ui.admin/css/style.css"/>
+	<!--[if IE 6]>
+	<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+	<script>DD_belatedPNG.fix('*');</script>
+	<![endif]-->
+	<title>H-ui.admin v3.1</title>
+	<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+	<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
 <header class="navbar-wrapper">
@@ -115,118 +115,118 @@
 	</div>
 </header>
 <aside class="Hui-aside">
-    <div class="menu_dropdown bk_2">
-        <dl id="menu-article">
-            <dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/shop/toArticleList" data-title="资讯管理" href="javascript:void(0)">资讯管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-picture">
-            <dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/shop/toOrderList" data-title="订单管理" href="javascript:void(0)">订单管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-product">
-            <dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/pd/pdBc/listPdBrand" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
-                    <li><a data-href="${ctx}/pd/pdTp/listPdType?path=list" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-                    <li><a data-href="${ctx}/pd/pdPd/listPdProduce" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-comments">
-            <dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/shop/toFeedbackList" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-member">
-            <dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/shop/toMemberList" data-title="会员列表" href="javascript:;">会员列表</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberDel" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberLevel" data-title="等级管理" href="javascript:;">等级管理</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberScoreoperation" data-title="积分管理" href="javascript:;">积分管理</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberRecordBrowse" data-title="浏览记录" href="javascript:void(0)">浏览记录</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberRecordDownload" data-title="下载记录" href="javascript:void(0)">下载记录</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberRecordShare" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
-                    <li><a data-href="${ctx}/shop/toMemberRecordDetails" data-title="用户详情" href="javascript:void(0)">用户详情</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-admin">
-            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/admin/AdminRole/roleOfAdmin" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-                    <li><a data-href="${ctx}/admin/AdPer/listPer" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-                    <li><a data-href="${ctx}/admin/AdminRole/adminOfRole" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-tongji">
-            <dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/shop/toChartsSt" data-title="折线图" href="javascript:void(0)">折线图</a></li>
-                    <li><a data-href="${ctx}/shop/toChartsNd" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
-                    <li><a data-href="${ctx}/shop/toChartsRd" data-title="区域图" href="javascript:void(0)">区域图</a></li>
-                    <li><a data-href="${ctx}/shop/toChartsFourth" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
-                    <li><a data-href="${ctx}/shop/toChartsFifth" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
-                    <li><a data-href="${ctx}/shop/toChartsSixth" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
-                    <li><a data-href="${ctx}/shop/toChartsSeventh" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="menu-system">
-            <dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a data-href="${ctx}/shop/toSystemBase" data-title="系统设置" href="javascript:void(0)">系统设置</a></li>
-                    <li><a data-href="${ctx}/shop/toSystemCategory" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
-                    <li><a data-href="${ctx}/shop/toSystemData" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
-                    <li><a data-href="${ctx}/shop/toSystemShielding" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
-                    <li><a data-href="${ctx}/shop/toSystemLog" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
-                </ul>
-            </dd>
-        </dl>
+	<div class="menu_dropdown bk_2">
+		<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toArticleList" data-title="资讯管理" href="javascript:void(0)">资讯管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toOrderList" data-title="订单管理" href="javascript:void(0)">订单管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-product">
+			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toProductBrand" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
+					<li><a data-href="${ctx}/shop/toProductCategory" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
+					<li><a data-href="${ctx}/shop/toProductList" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toFeedbackList" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-member">
+			<dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toMemberList" data-title="会员列表" href="javascript:;">会员列表</a></li>
+					<li><a data-href="${ctx}/shop/toMemberDel" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
+					<li><a data-href="${ctx}/shop/toMemberLevel" data-title="等级管理" href="javascript:;">等级管理</a></li>
+					<li><a data-href="${ctx}/shop/toMemberScoreoperation" data-title="积分管理" href="javascript:;">积分管理</a></li>
+					<li><a data-href="${ctx}/shop/toMemberRecordBrowse" data-title="浏览记录" href="javascript:void(0)">浏览记录</a></li>
+					<li><a data-href="${ctx}/shop/toMemberRecordDownload" data-title="下载记录" href="javascript:void(0)">下载记录</a></li>
+					<li><a data-href="${ctx}/shop/toMemberRecordShare" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
+					<li><a data-href="${ctx}/shop/toMemberRecordDetails" data-title="用户详情" href="javascript:void(0)">用户详情</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-admin">
+			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toAdminRole" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+					<li><a data-href="${ctx}/shop/toAdminPermission" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="${ctx}/shop/toAdminList" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-tongji">
+			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toChartsSt" data-title="折线图" href="javascript:void(0)">折线图</a></li>
+					<li><a data-href="${ctx}/shop/toChartsNd" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
+					<li><a data-href="${ctx}/shop/toChartsRd" data-title="区域图" href="javascript:void(0)">区域图</a></li>
+					<li><a data-href="${ctx}/shop/toChartsFourth" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
+					<li><a data-href="${ctx}/shop/toChartsFifth" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
+					<li><a data-href="${ctx}/shop/toChartsSixth" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
+					<li><a data-href="${ctx}/shop/toChartsSeventh" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-system">
+			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="${ctx}/shop/toSystemBase" data-title="系统设置" href="javascript:void(0)">系统设置</a></li>
+					<li><a data-href="${ctx}/shop/toSystemCategory" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
+					<li><a data-href="${ctx}/shop/toSystemData" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
+					<li><a data-href="${ctx}/shop/toSystemShielding" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
+					<li><a data-href="${ctx}/shop/toSystemLog" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
+				</ul>
+			</dd>
+		</dl>
 
-        <dl>
-            <dt><i class="Hui-iconfont">&#xe62e;</i> 库存管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-            </dd>
-        </dl>
-    </div>
+		<dl>
+			<dt><i class="Hui-iconfont">&#xe62e;</i> 库存管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+			</dd>
+		</dl>
+	</div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">
-    <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
-        <div class="Hui-tabNav-wp">
-            <ul id="min_title_list" class="acrossTab cl">
-                <li class="active">
-                    <span title="我的桌面" data-href="welcome.jsp">我的桌面</span>
-                    <em></em></li>
-            </ul>
-        </div>
-        <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
-    </div>
-    <div id="iframe_box" class="Hui-article">
-        <div class="show_iframe">
-            <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="${ctx}/shop/toWelcome"></iframe>
-        </div>
-    </div>
+	<div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+		<div class="Hui-tabNav-wp">
+			<ul id="min_title_list" class="acrossTab cl">
+				<li class="active">
+					<span title="我的桌面" data-href="welcome.jsp">我的桌面</span>
+					<em></em></li>
+			</ul>
+		</div>
+		<div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
+	</div>
+	<div id="iframe_box" class="Hui-article">
+		<div class="show_iframe">
+			<div style="display:none" class="loading"></div>
+			<iframe scrolling="yes" frameborder="0" src="${ctx}/shop/toWelcome"></iframe>
+		</div>
+	</div>
 </section>
 
 <div class="contextMenu" id="Huiadminmenu">

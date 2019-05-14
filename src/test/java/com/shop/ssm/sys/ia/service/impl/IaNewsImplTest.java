@@ -28,17 +28,17 @@ public class IaNewsImplTest extends BaseTestCase {
     @Test
     public void insert() {
 
-        for (int i=1;i<30;i++) {
-            iaNews.setNtitle("胖虎看彩虹萨松看就看"+i);
+        for (int i=1;i<5;i++) {
+            iaNews.setNtitle("积极健康"+i);
             iaNews.setNbrieftitle("胖虎老弟");
             iaNews.setNtype(2);
             iaNews.setNabstract("萨瓦渡口");
             iaNews.setNwriter("轩轩");
             iaNews.setNsource("娱乐");
             iaNews.setUpdatetime(null);
-            iaNews.setNlimit(2);
-            iaNews.setNviewed(2);
-            iaNews.setNstate(2);
+            iaNews.setNlimit(1);
+            iaNews.setNviewed(1);
+            iaNews.setNstate(1);
             iaNews.setContent("insaosdnaosda撒大大买卡");
             iiaNewsService.insert(iaNews);
         }

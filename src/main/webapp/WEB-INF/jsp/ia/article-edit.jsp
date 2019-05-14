@@ -50,12 +50,23 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">分类栏目：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<f:select path="ntype" class="select">
-					<f:options items="${iaTypelist}" itemLabel="tname" itemValue="tid"></f:options>
-				</f:select>
-			</span>
-				<div class="formControls col-xs-8 col-sm-9">
+			<%--<f:select path="ntype"  class="select"  itemLabel="tname"  itemValue="tid">--%>
+                <%--<c:forEach items="${Typelist}" var="v" varStatus="status" >--%>
+                    <%--<c:choose>--%>
+                        <%--<c:when test="${v.tname eq iaType.tname}">--%>
+                            <%--<option value="${v.tid}" selected="true">${v.tname}</option>--%>
+                        <%--</c:when>--%>
+                        <%--<c:otherwise>--%>
+                            <%--<option value="${v.tid}">${v.tname}</option>--%>
+                        <%--</c:otherwise>--%>
+                    <%--</c:choose>--%>
+                <%--</c:forEach>--%>
+          <%--</f:select>--%>
+                    <select name="ntype" class="select-box">
+                    <c:forEach items="${Typelist}" var="v" varStatus="status">
+                            <option value="${v.tid}"<c:if test="${v.tid==iaNews1.ntype}">selected="selected"</c:if>>${v.tname}</option>
+                    </c:forEach>
+                </select>
 				</div>
 			</div>
 		</div>
@@ -78,30 +89,28 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">来源：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="hidden" name="nsource" value="${iaNews1.nsource}"/>
+				<input type="text" name="nsource" value="${iaNews1.nsource}" class="input-text" />
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">评论内容：</label>
-			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
-				<div class="check-box">
-					<input type="hidden" name="nlimit" value="${iaNews1.nlimit}"/>
-				</div>
-			</div>
-		</div>
+            <div class="formControls col-xs-8 col-sm-9">
+					<input type="text" name="nlimit" value="${iaNews1.nlimit}" class="input-text" />
+            </div>
+        </div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">浏览次数：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="hidden" name="nviewed" value="${iaNews1.nviewed}"/>
+				<input type="text" name="nviewed" value="${iaNews1.nviewed}" class="input-text" />
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">发布状态：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-					<input type="hidden" name="nstate" value="${iaNews1.nstate}"/>
+					<input type="text" name="nstate" value="${iaNews1.nstate}" class="input-text" />
 			</div>
 		</div>
 

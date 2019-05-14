@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.ssm.sys.or.mapper.OrItemMapper" >
+
   <resultMap id="BaseResultMap" type="com.shop.ssm.sys.or.model.OrItem" >
     <constructor >
       <idArg column="iid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -10,6 +11,15 @@
       <arg column="isum" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
     </constructor>
   </resultMap>
+
+  <resultMap id="orItem" type="com.shop.ssm.sys.or.model.OrItem" >
+      <id column="iid" property="iid" javaType="java.lang.Integer" />
+      <result column="pid" property="pid" javaType="java.lang.Integer" />
+      <result column="createdate" property="createdate" javaType="java.util.Date" />
+      <result column="icount" property="icount" javaType="java.lang.Integer" />
+      <result column="isum" property="isum" javaType="java.math.BigDecimal" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     iid, pid, createdate, icount, isum
   </sql>
@@ -19,7 +29,17 @@
     from or_item
     where iid = #{iid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <select id="listOrItem" resultMap="orItem" resultType="com.shop.ssm.sys.or.model.OrItem">
+      select * FROM or_item
+      where 1=1
+      <if test="null!=pid and ''!=pid">
+        AND pid LIKE concat("%",#{pid,jdbcType=VARCHAR},"%")
+      </if>
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from or_item
     where iid = #{iid,jdbcType=INTEGER}
   </delete>
