@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.ssm.sys.or.mapper.OrstorageMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.ssm.sys.or.model.Orstorage" >
+    <constructor >
+      <idArg column="stk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="prid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="stk_warehouse" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="stk_ware" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="stk_count" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="stk_memo" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <resultMap id="orstorage" type="com.shop.ssm.sys.or.model.Orstorage" >
+      <id column="stk_id" property="stkId" javaType="java.lang.Integer" />
+      <result column="prid" property="prid" javaType="java.lang.Integer" />
+      <result column="stk_warehouse" property="stkWarehouse" javaType="java.lang.String" />
+      <result column="stk_ware" property="stkWare" javaType="java.lang.String" />
+      <result column="stk_count" property="stkCount" javaType="java.lang.Integer" />
+      <result column="stk_memo" property="stkMemo" javaType="java.lang.String" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    stk_id, prid, stk_warehouse, stk_ware, stk_count, stk_memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from or_storage
+    where stk_id = #{stkId,jdbcType=INTEGER}
+  </select>
+
+    <select id="listOrstorage" resultMap="orstorage" resultType="com.shop.ssm.sys.or.model.Orstorage">
+      select * FROM or_storage
+      where 1=1
+      <if test="null!=prid and ''!=prid">
+        AND prid LIKE concat("%",#{prid,jdbcType=VARCHAR},"%")
+      </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from or_storage
+    where stk_id = #{stkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.ssm.sys.or.model.Orstorage" >
+    insert into or_storage (stk_id, prid, stk_warehouse, 
+      stk_ware, stk_count, stk_memo
+      )
+    values (#{stkId,jdbcType=INTEGER}, #{prid,jdbcType=INTEGER}, #{stkWarehouse,jdbcType=VARCHAR}, 
+      #{stkWare,jdbcType=VARCHAR}, #{stkCount,jdbcType=INTEGER}, #{stkMemo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.ssm.sys.or.model.Orstorage" >
+    insert into or_storage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stkId != null" >
+        stk_id,
+      </if>
+      <if test="prid != null" >
+        prid,
+      </if>
+      <if test="stkWarehouse != null" >
+        stk_warehouse,
+      </if>
+      <if test="stkWare != null" >
+        stk_ware,
+      </if>
+      <if test="stkCount != null" >
+        stk_count,
+      </if>
+      <if test="stkMemo != null" >
+        stk_memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stkId != null" >
+        #{stkId,jdbcType=INTEGER},
+      </if>
+      <if test="prid != null" >
+        #{prid,jdbcType=INTEGER},
+      </if>
+      <if test="stkWarehouse != null" >
+        #{stkWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="stkWare != null" >
+        #{stkWare,jdbcType=VARCHAR},
+      </if>
+      <if test="stkCount != null" >
+        #{stkCount,jdbcType=INTEGER},
+      </if>
+      <if test="stkMemo != null" >
+        #{stkMemo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.ssm.sys.or.model.Orstorage" >
+    update or_storage
+    <set >
+      <if test="prid != null" >
+        prid = #{prid,jdbcType=INTEGER},
+      </if>
+      <if test="stkWarehouse != null" >
+        stk_warehouse = #{stkWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="stkWare != null" >
+        stk_ware = #{stkWare,jdbcType=VARCHAR},
+      </if>
+      <if test="stkCount != null" >
+        stk_count = #{stkCount,jdbcType=INTEGER},
+      </if>
+      <if test="stkMemo != null" >
+        stk_memo = #{stkMemo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stk_id = #{stkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.ssm.sys.or.model.Orstorage" >
+    update or_storage
+    set prid = #{prid,jdbcType=INTEGER},
+      stk_warehouse = #{stkWarehouse,jdbcType=VARCHAR},
+      stk_ware = #{stkWare,jdbcType=VARCHAR},
+      stk_count = #{stkCount,jdbcType=INTEGER},
+      stk_memo = #{stkMemo,jdbcType=VARCHAR}
+    where stk_id = #{stkId,jdbcType=INTEGER}
+  </update>
+</mapper>
